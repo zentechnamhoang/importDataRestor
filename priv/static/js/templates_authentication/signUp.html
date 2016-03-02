@@ -1,0 +1,87 @@
+<div class="div-authentication-container sign-up">
+    <div class="div-authentication-header" layout="row">
+        <div class="div-sign-up-header-logo left">
+            <img class="imageLogo" src="/images/logo.png">
+        </div>
+        <div class="div-sign-up-header-title right">
+            <p class="sign-up-title">Sign up</p>
+        </div>
+    </div>
+    <div class="div-authentication-content">
+        <form name="formAuthenticationSignUp" class="form-sign-up-content">
+            <div class="div-sign-up-container-content-of-row" layout="row">
+                <div class="div-sign-up-container-content-input left">
+                    <md-input-container class="md-input-container-authentication">
+                        <label>First name</label>
+                        <input ng-model="firstName" type="text" name="firstName" required ng-change="change()">
+                        <div ng-messages="formAuthenticationSignUp.firstName.$error" ng-if='formAuthenticationSignUp.firstName.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div class="div-sign-up-container-content-input right">
+                    <md-input-container class="md-input-container-authentication">
+                        <label>Last name</label>
+                        <input ng-model="lastName" type="text" name="lastName" required ng-change="change()">
+                        <div ng-messages="formAuthenticationSignUp.lastName.$error" ng-if='formAuthenticationSignUp.lastName.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+            <div class="div-sign-up-container-content-of-row" layout="row">
+                <div class="div-sign-up-container-content-input left">
+                    <md-input-container class="md-input-container-authentication">
+                        <label>Email</label>
+                        <input ng-model="email" type="text" name="email" required ng-change="change()">
+                        <div ng-messages="formAuthenticationSignUp.email.$error" ng-if='formAuthenticationSignUp.email.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div class="div-sign-up-container-content-input right">
+                    <md-input-container class="md-input-container-authentication">
+                        <label>Phone number</label>
+                        <input ng-model="phoneNumber" type="text" name="phoneNumber" required ng-change="change()">
+                        <div ng-messages="formAuthenticationSignUp.phoneNumber.$error" ng-if='formAuthenticationSignUp.phoneNumber.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+            <div class="div-sign-up-container-content-of-row" layout="row">
+                <div class="div-sign-up-container-content-input left">
+                    <md-input-container class="md-input-container-authentication">
+                        <label>Password</label>
+                        <input ng-model="password" type="text" name="password" required ng-change="change()">
+                        <div ng-messages="formAuthenticationSignUp.password.$error" ng-if='formAuthenticationSignUp.password.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div class="div-sign-up-container-content-input right">
+                    <md-input-container class="md-input-container-authentication">
+                        <label>Password again</label>
+                        <input ng-model="passwordAgain" type="text" name="passwordAgain" required ng-change="change()">
+                        <div ng-messages="formAuthenticationSignUp.passwordAgain.$error" ng-if='formAuthenticationSignUp.passwordAgain.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+            <div class="div-sign-up-container-button">
+                <md-button class="button-authentication md-raised md-primary" ng-click="clickedSendButtonLogin()" ng-disabled="formAuthenticationSignUp.$invalid">
+                    <span ng-hide="loading">Login</span>
+                    <md-progress-circular md-mode="indeterminate" md-diameter="30" ng-show="loading"></md-progress-circular>
+                </md-button>
+            </div>
+        </form>
+    </div>
+    <div class="div-authentication-footer" layout="row">
+        <div class="footer-container-link left"></div>
+        <a href="#/Login" class="footer-container-link right" >Go back to Login</a>
+    </div>
+</div>
