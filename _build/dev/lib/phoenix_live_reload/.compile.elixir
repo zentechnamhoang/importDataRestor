@@ -1,0 +1,21 @@
+v1.
+{<<"/Users/zentechnamhoang/restaurant_import_info/_build/dev/lib/phoenix_live_reload/ebin/Elixir.Phoenix.LiveReloader.Socket.beam">>,
+ 'Elixir.Phoenix.LiveReloader.Socket',<<"lib/phoenix_live_reload/socket.ex">>,
+ ['Elixir.Phoenix.Transports.LongPoll','Elixir.Kernel','Elixir.Module',
+  'Elixir.Phoenix.Socket','Elixir.Phoenix',
+  'Elixir.Phoenix.Transports.WebSocket'],
+ [],[],nil}.
+{<<"/Users/zentechnamhoang/restaurant_import_info/_build/dev/lib/phoenix_live_reload/ebin/Elixir.Phoenix.LiveReload.Channel.beam">>,
+ 'Elixir.Phoenix.LiveReload.Channel',<<"lib/phoenix_live_reload/channel.ex">>,
+ ['Elixir.Phoenix.Channel','Elixir.Kernel','Elixir.Module',
+  'Elixir.Phoenix.Socket','Elixir.Logger'],
+ [erlang,'Elixir.Path','Elixir.Access','Elixir.String.Chars',fs,
+  'Elixir.String','Elixir.Enum','Elixir.Application'],
+ [],nil}.
+{<<"/Users/zentechnamhoang/restaurant_import_info/_build/dev/lib/phoenix_live_reload/ebin/Elixir.Phoenix.LiveReloader.beam">>,
+ 'Elixir.Phoenix.LiveReloader',<<"lib/phoenix_live_reload/live_reloader.ex">>,
+ ['Elixir.Kernel','Elixir.Plug','Elixir.Module','Elixir.File',
+  'Elixir.Plug.Conn','Elixir.Application'],
+ [erlang,'Elixir.Map','Elixir.Access','Elixir.String.Chars','Elixir.String',
+  'Elixir.Enum'],
+ [],nil}.

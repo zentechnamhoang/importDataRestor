@@ -1,0 +1,41 @@
+<div class="div-authentication-container login-container">
+    <div class="div-authentication-header login">
+        <img class="imageLogo" src="/images/logo.png">
+    </div>
+    <div class="div-authentication-content">
+        <form name="formAuthenticationContainerContent" class="form-login-content">
+            <div class="div-login-input-content">
+                <md-input-container class="md-input-container-authentication">
+                    <label>Email</label>
+                    <input class="input-login-content" ng-model="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" type="email" name="email" required="" ng-change="change()"/>                 
+                </md-input-container>
+            </div>
+            <div class="div-login-input-content">
+                <md-input-container class="md-input-container-authentication">
+                    <label>Password</label>
+                    <input class="input-login-content" ng-model="password" type="password" name="password" ng-change="change()" required=""/>
+                </md-input-container>
+            </div>
+            
+            <div class="div-login-content-buttonLogin-and-messages">
+                <div class="div-login-messages">
+                    <div ng-show="messageCanNot" class="dashboard-message-error" >Can not log in</div>
+                    <p ng-show="isSuccess" class="dashboard-message-error">{{message}}</p>
+                </div>
+                <div class="div-login-container-button">
+                    <md-button class="button-authentication md-raised md-primary"
+                        ng-click="clickedSendButtonLogin()"
+                        ng-disabled="formAuthenticationContainerContent.$invalid">
+                        <span ng-hide="loading">Login</span>
+                        <md-progress-circular md-mode="indeterminate" md-diameter="30" ng-show="loading"></md-progress-circular>
+                    </md-button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+    <div class="div-authentication-footer" layout="row">
+        <a href="#/ResetPassword" class="footer-container-link left">Forgot Password?</a>
+        <a href="#/Signup" class="footer-container-link right" >Sign Up</a>
+    </div>
+</div>

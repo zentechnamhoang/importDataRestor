@@ -1,0 +1,29 @@
+<link rel='stylesheet prefetch' href='/js/bower_components/angular-material/angular-material.css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/js/bower_components/angular-ui-tree/dist/angular-ui-tree.css">
+<link rel="stylesheet" href="/css/app_dashboard.css">
+<div ng-app="ZentechRestor" class="div-dashboard">
+    <div ui-view layout="row" class="div-dashboard"></div>
+</div>
+
+
+
+<script src="/js/bower_components/angular/angular.js"></script>
+<script src="/js/bower_components/angular-animate/angular-animate.js"></script>
+<script src="/js/bower_components/angular-aria/angular-aria.js"></script>
+<script src="/js/bower_components/angular-messages/angular-messages.js"></script>
+<script src="/js/bower_components/angular-material/angular-material.js"></script>
+<script src="/js/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src='http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js'></script>
+<script type="text/javascript" src="/js/bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+
+<!--my scripts-->
+
+<script src="/js/script_dashboard/app.module.js"></script>
+<script src="/js/script_dashboard/menuBar.service.js"></script>
+<script src="/js/script_dashboard/homeController.js"></script>
+<script src="/js/script_dashboard/menuBar.link.directive.js"></script>
+<script src="/js/script_dashboard/menuBar.toggle.directive.js"></script>
+<script src="/js/script_dashboard/menuBarController.js"></script>
+<script src="/js/script_dashboard/app.routes.js"></script>

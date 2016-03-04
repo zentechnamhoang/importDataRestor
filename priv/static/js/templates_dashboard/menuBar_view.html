@@ -1,0 +1,36 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+  <div class="div-header-dashboard">
+      <a class="link-header-sidnav" href="#/">
+        <div class="div-header-sidenav">
+            <img class="imageLogo" src="/images/logo.png">
+            <h1 class="h1-header-sidenav">Zentech Restor</h1>
+        </div>
+      </a>
+  </div>
+  <md-content role="navigation" class="md-content-sidenav">
+    <ul class="side-menu">
+      <li ng-repeat="section in mc.menu.sections" class="parent-list-item" ng-class="{'parentActive' : mc.isSectionSelected(section)}">
+        <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+        <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+      </li>
+    </ul>
+  </md-content>
+</md-sidenav>
+<div layout="column" tabindex="-1" flex>
+  <md-toolbar class="md-toolbar-header">
+    <div class="div-header-toolbar" layout="row">
+        <button class="md-icon-button md-button md-ink-ripple hide-gt-sm" type="button" ng-click="openMenuBar()" hide-gt-sm aria-label="Toggle Menu">
+            <md-icon md-svg-src="/images/ic_menu_white_24px.svg" aria-hidden="true"></md-icon>
+        </button>
+        <div class="div-header-toolbar" layout="row" flex>
+            <h2 class="h2-header-toolbar-title">Nam</h2>
+            <a class="link-header-toolbar-logout" href="#">Logout</a>
+        </div>
+    </div>
+  </md-toolbar>
+  <md-content flex class="md-content-dashboard">
+        <div>
+            <div ui-view name="content"></div>        
+        </div>
+  </md-content>
+</div>
