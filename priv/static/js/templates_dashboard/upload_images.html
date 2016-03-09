@@ -1,0 +1,37 @@
+<md-dialog>
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+            <h2>Upload Images</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon aria-label="Close dialog" class="md-icon-close">close</md-icon>
+            </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div>
+                <input id="inputFile" type="file" accept=".jpg, .png, .bmp, .gif" class="ng-hide" img-cropper-fileread image="cropper.sourceImage" />
+                <div style="text-align:center;">
+                    <canvas width="500" height="300" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage" crop-width="150" crop-height="100" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
+                </div>
+                <div>Cropped Image (Left: {{bounds.left}} Right: {{bounds.right}} Top: {{bounds.top}} Bottom: {{bounds.bottom}})</div>
+                <div ng-show="cropper.croppedImage!=null">
+                    <img ng-src="{{cropper.croppedImage}}" />
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button onclick="document.getElementById('inputFile').click();">
+            Browers
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="uploadImage(this)">
+            Save
+            </md-button>
+            <md-button ng-click="cancel()">
+            Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -1,0 +1,37 @@
+<div>
+    <div>
+        <h2>Menu Item</h2>
+    </div>
+    <md-content class="md-content-input-info">
+        <form name="formDashboardInputInfo">
+            <div layout="row" class="div-field-input">
+                <div flex="33" class="div-title-field">
+                    <span class="span-title-field">Menu Item Name</span>
+                </div>
+                <div flex >
+                    <md-input-container md-no-float>
+                        <input ng-model="node.title" type="text" name="menuItemName" required="" placeholder="Enter menu item name">
+                        <div ng-messages="formDashboardInputInfo.menuItemName.$error" ng-if='formDashboardRestaurantInfo.menuItemName.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            <div layout="row" class="div-field-input">
+                <div flex="33" class="div-title-field">
+                    <span class="span-title-field">Menu Item Status</span>
+                </div>
+                <div flex >
+                    <md-input-container md-no-float>
+                        <input ng-model="node.title" type="text" name="menuItemStatus" required="" placeholder="Enter menu item status">
+                        <div ng-messages="formDashboardInputInfo.menuItemStatus.$error" ng-if='formDashboardRestaurantInfo.menuItemStatus.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            
+            <md-button class="md-primary md-raised" ng-click="showAdvanced($event)">Upload images</md-button>
+        </form>
+    </md-content>
+</div>

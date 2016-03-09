@@ -19,7 +19,20 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
                 }
             }
         })
-//    $urlRouterProvider.otherwise("home");
+        .state('menu.restaurant', {
+            url: 'restaurant',
+            abtract: true
+        })
+        .state('menu.restaurant.restaurant1',{
+            url: '/restaurant1',
+            views: {
+                'content@menu': {
+                    templateUrl: '/js/templates_dashboard/restaurant_view.html',
+                    controller: "restaurantController"
+                }
+            }
+        })
+    $urlRouterProvider.otherwise("home");
 }]);
 //take all whitespace out of string
 myApp.filter('nospace', function () {

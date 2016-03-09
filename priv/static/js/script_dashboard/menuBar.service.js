@@ -14,7 +14,7 @@ myApp.factory('menu', ['$location', function ($location) {
         icon: 'home',
         pages: [{
             name: 'Restaurant',
-            state: 'menu.restaurant.restaurant',
+            state: 'menu.restaurant.restaurant1',
             type: 'link'
         }]
     });

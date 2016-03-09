@@ -1,22 +1,24 @@
 <script type="text/ng-template" id="nodes_renderer.html">
     <div  ui-tree-handle class="tree-node tree-node-content" layout="row">
-        <md-button class="md-button-icon-mini md-fab md-raised" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
+        <md-button class="md-button-icon-mini md-fab md-raised" ng-if="node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
             <md-icon class="md-toggle-icon" style="color: rgb(63,81,181)" ng-show="collapsed">expand_less</md-icon>
             <md-icon class="md-toggle-icon" style="color: rgb(63,81,181)" ng-hide="collapsed">expand_more</md-icon>
         </md-button>
-        <div class="div-title-tree-view">{{node.title}}</div>
-        <md-button class="md-button-icon-tree-view md-raised md-primary" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;">
+        <div class="div-title-tree-view">{{node.name}}</div>
+        <md-button class="md-button-icon-tree-view md-raised md-primary" data-nodrag ng-if="node.type != 'menuItem'" ng-click="newSubItem(this)" style="margin-right: 8px;">
             <md-icon>add</md-icon>
         </md-button>
-        <md-button class="md-button-icon-tree-view close md-raised md-warn" data-nodrag ng-click="remove(this)">
+        <md-button class="md-button-icon-tree-view close md-raised md-warn" ng-style="node.type == 'menuItem' && {'margin-left': 'auto'}" data-nodrag ng-click="remove(this)">
             <md-icon>close</md-icon>
         </md-button>
     </div>
+  
     <ol ui-tree-nodes="" ng-model="node.nodes" ng-hide="collapsed">
         <li class="li-non-number" ng-repeat="node in node.nodes" ui-tree-node>
             <div ng-include="'nodes_renderer.html'"></div>
         </li>
     </ol>
+    
 </script>
 
 <div class="row">
@@ -31,7 +33,7 @@
     <div ui-tree="treeOptions" id="tree-root">
       <ol ui-tree-nodes ng-model="data">
         <li class="li-non-number" ng-repeat="node in data" ui-tree-node>
-            <div  ng-include="'nodes_renderer.html'"></div>
+            <div ng-include="'nodes_renderer.html'" ng-if="node.type == 'menu'"></div>
         </li>
       </ol>
     </div>

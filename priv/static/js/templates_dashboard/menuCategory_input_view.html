@@ -1,0 +1,49 @@
+<div>
+    <div>
+        <h2>Menu Category</h2>
+    </div>
+    <md-content class="md-content-input-info">
+        <form name="formDashboardInputInfo">
+            <div layout="row" class="div-field-input">
+                <div flex="33" class="div-title-field">
+                    <span class="span-title-field">Menu Category Name</span>
+                </div>
+                <div flex >
+                    <md-input-container md-no-float>
+                        <input ng-model="node.title" type="text" name="menuCategoryName" required="" placeholder="Enter menu category name">
+                        <div ng-messages="formDashboardInputInfo.menuCategoryName.$error" ng-if='formDashboardRestaurantInfo.menuCategoryName.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            <div layout="row" class="div-field-input">
+                <div flex="33" class="div-title-field">
+                    <span class="span-title-field">Menu Category Status</span>
+                </div>
+                <div flex >
+                    <md-input-container md-no-float>
+                        <input ng-model="node.title" type="text" name="menuCategoryStatus" required="" placeholder="Enter menu Category status">
+                        <div ng-messages="formDashboardInputInfo.menuCategoryStatus.$error" ng-if='formDashboardRestaurantInfo.menuCategoryStatus.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+            <md-button class="md-primary md-raised" ng-click="showAdvanced($event, null)">Upload images</md-button>
+            <!--<div class="thumbsshell">
+                <div class="thumbswrapper">
+                    <ul>
+                        <li ng-repeat="image in images">
+                            <div class="thumbwrapper">
+                                <a ng-href="" ng-click="showAdvanced($event, image)">
+                                    <img class="thumbnail" ng-src="{{IMAGE_LOCATION+image}}" />
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>-->
+        </form>
+    </md-content>
+</div>

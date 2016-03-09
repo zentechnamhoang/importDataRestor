@@ -1,0 +1,22 @@
+<div>
+    <div>
+        <h2>Restaurant</h2>
+    </div>
+    <md-content class="md-content-input-info">
+        <form name="formDashboardRestaurantInfo">
+            <div layout="row" class="div-field-input">
+                <div flex="33" class="div-title-field">
+                    <span class="span-title-field">Restaurant Name</span>
+                </div>
+                <div flex >
+                    <md-input-container md-no-float>
+                        <input ng-model="node.title" type="text" name="restaurantName" required placeholder="Enter restaurant name">
+                        <div ng-messages="formDashboardRestaurantInfo.restaurantName.$error" ng-if='formDashboardRestaurantInfo.restaurantName.$dirty'>
+                            <div ng-message="required">You can not leave this empty.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </form>
+    </md-content>
+</div>

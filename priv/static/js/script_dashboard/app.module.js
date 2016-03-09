@@ -1,7 +1,10 @@
 (function(){
   'use strict';
   angular.module('common.services', []);
-  angular.module('home.controller', []);
-  angular.module('menuBar.controller', ['common.directives', 'home.controller', 'ngMaterial', 'ui.router', 'ui.tree']);
+  angular.module('home.controller', ['dashboard.directive']);
+  angular.module('dashboard.directive', [])
+  angular.module('dashboard.service', [])
+  angular.module('restaurant.controller', ['dashboard.directive', 'dashboard.service'])
+  angular.module('menuBar.controller', ['common.directives', 'home.controller', 'restaurant.controller', 'ngMaterial', 'ui.router', 'ui.tree', 'angular-img-cropper']);
   angular.module('common.directives', ['common.services']);
 })();

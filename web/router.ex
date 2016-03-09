@@ -21,7 +21,11 @@ defmodule RestaurantImportInfo.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", RestaurantImportInfo do
-  #   pipe_through :api
-  # end
+  scope "/api", RestaurantImportInfo.Api do
+    pipe_through :api
+    
+    scope "/upload" do
+        post "/uploadfile", UploadController, :upload_file
+    end
+  end
 end
