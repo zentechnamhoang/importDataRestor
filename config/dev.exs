@@ -18,7 +18,7 @@ config :restaurant_import_info, RestaurantImportInfo.Endpoint,
 config :restaurant_import_info, RestaurantImportInfo.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
+      ~r{priv/static/.*(js|css)$},
       ~r{web/views/.*(ex)$},
       ~r{web/templates/.*(eex)$}
     ]

@@ -10,7 +10,7 @@
                 </div>
                 <div flex >
                     <md-input-container md-no-float>
-                        <input ng-model="node.title" type="text" name="menuItemName" required="" placeholder="Enter menu item name">
+                        <input ng-model="node.name" type="text" name="menuItemName" required="" placeholder="Enter menu item name">
                         <div ng-messages="formDashboardInputInfo.menuItemName.$error" ng-if='formDashboardRestaurantInfo.menuItemName.$dirty'>
                             <div ng-message="required">You can not leave this empty.</div>
                         </div>
@@ -23,7 +23,7 @@
                 </div>
                 <div flex >
                     <md-input-container md-no-float>
-                        <input ng-model="node.title" type="text" name="menuItemStatus" required="" placeholder="Enter menu item status">
+                        <input ng-model="node.status" type="text" name="menuItemStatus" required="" placeholder="Enter menu item status">
                         <div ng-messages="formDashboardInputInfo.menuItemStatus.$error" ng-if='formDashboardRestaurantInfo.menuItemStatus.$dirty'>
                             <div ng-message="required">You can not leave this empty.</div>
                         </div>
@@ -31,7 +31,69 @@
                 </div>
             </div>
             
-            <md-button class="md-primary md-raised" ng-click="showAdvanced($event)">Upload images</md-button>
+            <div layout="row" layout="margin">
+                <div flex>
+                    <md-button ng-click="showDialogAddSize($event)">Add size</md-button>
+                    <md-table-container>
+                        <table md-table>
+                            <thead md-head>
+                                <tr md-row>
+                                    <th md-column>#</th>
+                                    <th md-column>Name size</th>
+                                    <th md-column>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody md-body>
+                                <tr md-row ng-repeat="price in pricePoints">
+                                    <td md-cell>{{$index + 1}}</td>
+                                    <td md-cell>{{price.name}}</td>
+                                    <td md-cell>{{price.price + " " + price.currencyUnit}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+                </div>
+                <div flex>
+                    <md-button ng-click="showDialogAddOptionSet($event)">Add option</md-button>
+                    <md-table-container>
+                        <table md-table>
+                            <thead md-head>
+                                <tr md-row>
+                                    <th md-column>#</th>
+                                    <th md-column>Name size</th>
+                                    <th md-column>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody md-body>
+                                <tr md-row ng-repeat="option in optionSet">
+                                    <td md-cell>{{$index + 1}}</td>
+                                    <td md-cell>{{option.name}}</td>
+                                    <td md-cell>{{option.price + " " + option.currencyUnit}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+                </div>
+                
+            </div>
+                
+            <md-button class="md-primary md-raised" ng-click="showDialogUploadImage($event)">Upload images</md-button>
+            
+            <div class="div-thumbsshell" layout="row">
+                <div class="div-thumbswrapper">
+                    <ul class="ul-list-image" id="listImage" layout="row">
+                        <li ng-repeat="image in uploadedImages" style="width: 99.969px">
+                            <div style="width: 99.969px">
+                                <img ng-mouseenter="showIt()" ng-mouseleave="hideIt()" class="img-dashboard-upload" ng-src="{{image}}"/>
+                                <md-button ng-mouseenter="showIt()" ng-mouseleave="hideIt()" ng-show="showButton" ng-click="deleteImage(image)" class="md-button-show-hiden-mouse-enter-leave md-fab md-mini md-warn">
+                                    <md-icon style="font-size: 18px; width: 18px; height: 18px;">close</md-icon>
+                                </md-button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
         </form>
     </md-content>
 </div>

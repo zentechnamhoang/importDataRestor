@@ -1,16 +1,28 @@
 <script type="text/ng-template" id="nodes_renderer.html">
-    <div  ui-tree-handle class="tree-node tree-node-content" layout="row">
-        <md-button class="md-button-icon-mini md-fab md-raised" ng-if="node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
-            <md-icon class="md-toggle-icon" style="color: rgb(63,81,181)" ng-show="collapsed">expand_less</md-icon>
-            <md-icon class="md-toggle-icon" style="color: rgb(63,81,181)" ng-hide="collapsed">expand_more</md-icon>
-        </md-button>
-        <div class="div-title-tree-view">{{node.name}}</div>
-        <md-button class="md-button-icon-tree-view md-raised md-primary" data-nodrag ng-if="node.type != 'menuItem'" ng-click="newSubItem(this)" style="margin-right: 8px;">
-            <md-icon>add</md-icon>
-        </md-button>
-        <md-button class="md-button-icon-tree-view close md-raised md-warn" ng-style="node.type == 'menuItem' && {'margin-left': 'auto'}" data-nodrag ng-click="remove(this)">
-            <md-icon>close</md-icon>
-        </md-button>
+    <md-toolbar class="md-menu-toolbar" ng-style="node.type == 'menuItem' && {'padding-bottom': '0'}">
+        <div ui-tree-handle class="md-toolbar-tools tree-node" ng-class="{'angular-ui-tree-handle-selected': node.selected}" layout="row">
+            <md-button class="md-button-icon-mini md-icon-button" ng-if="node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
+                <md-icon class="md-toggle-icon" style="color: rgb(63,81,181)" ng-show="collapsed">expand_less</md-icon>
+                <md-icon class="md-toggle-icon" style="color: rgb(63,81,181)" ng-hide="collapsed">expand_more</md-icon>
+            </md-button>
+            <div class="div-title-tree-view">{{node.name}}</div>
+            <span flex></span>
+            <md-button class="md-button-icon-tree-view md-primary md-icon-button" data-nodrag ng-if="node.type != 'menuItem'" ng-click="newSubItem(this)" style="margin-right: 8px;">
+                <md-icon>add</md-icon>
+            </md-button>
+            <md-button class="md-button-icon-tree-view md-warn md-icon-button" data-nodrag ng-click="remove(this)">
+                <md-icon>close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <div ng-show="node.selected">
+        <md-content ng-if="node.type == 'menuItem'" class="md-content-container-menu-item" layout="row">
+            <img ng-src="http://clipartist.net/links/clipartist.net/orange_icon_tweet-1979px.png" style="width: 40px; height: 40px; margin: auto 10px auto 0;" class="md-avatar">
+            <div class="md-list-item-text" layout="column">
+                <h4>Ngon</h4>
+                <p>$ 3.0</p>
+            </div>
+        </md-content>
     </div>
   
     <ol ui-tree-nodes="" ng-model="node.nodes" ng-hide="collapsed">
@@ -29,7 +41,7 @@
 </div>
 
 <div layout="row">
-  <div class="col-sm-6" flex>
+  <div class="div-dashboard-container-content tree-view" flex>
     <div ui-tree="treeOptions" id="tree-root">
       <ol ui-tree-nodes ng-model="data">
         <li class="li-non-number" ng-repeat="node in data" ui-tree-node>
@@ -39,7 +51,7 @@
     </div>
   </div>
 
-  <div class="col-sm-6" flex>
+  <div class="div-dashboard-container-content input-view" flex>
     <div class="info" ng-switch on="node.type">
         <div ng-switch-when="restaurant" restaurant-directive></div>
         <div ng-switch-when="menu" menu-directive></div>

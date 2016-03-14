@@ -27,10 +27,10 @@ myApp.directive('menuToggle', ['$timeout', function ($timeout ) {
         var controller = $element.parent().controller();
 
         $scope.isOpen = function () {
-        return controller.isOpen($scope.section);
+            return controller.isOpen($scope.section);
         };
         $scope.toggle = function () {
-        controller.toggleOpen($scope.section);
+            controller.toggleOpen($scope.section);
         };
     }
     };

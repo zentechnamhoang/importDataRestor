@@ -10,7 +10,7 @@
                 </div>
                 <div flex >
                     <md-input-container md-no-float>
-                        <input ng-model="node.title" type="text" name="menuCategoryName" required="" placeholder="Enter menu category name">
+                        <input ng-model="node.name" type="text" name="menuCategoryName" required="" placeholder="Enter menu category name">
                         <div ng-messages="formDashboardInputInfo.menuCategoryName.$error" ng-if='formDashboardRestaurantInfo.menuCategoryName.$dirty'>
                             <div ng-message="required">You can not leave this empty.</div>
                         </div>
@@ -23,27 +23,29 @@
                 </div>
                 <div flex >
                     <md-input-container md-no-float>
-                        <input ng-model="node.title" type="text" name="menuCategoryStatus" required="" placeholder="Enter menu Category status">
+                        <input ng-model="node.status" type="text" name="menuCategoryStatus" required="" placeholder="Enter menu Category status">
                         <div ng-messages="formDashboardInputInfo.menuCategoryStatus.$error" ng-if='formDashboardRestaurantInfo.menuCategoryStatus.$dirty'>
                             <div ng-message="required">You can not leave this empty.</div>
                         </div>
                     </md-input-container>
                 </div>
             </div>
-            <md-button class="md-primary md-raised" ng-click="showAdvanced($event, null)">Upload images</md-button>
-            <!--<div class="thumbsshell">
-                <div class="thumbswrapper">
-                    <ul>
-                        <li ng-repeat="image in images">
-                            <div class="thumbwrapper">
-                                <a ng-href="" ng-click="showAdvanced($event, image)">
-                                    <img class="thumbnail" ng-src="{{IMAGE_LOCATION+image}}" />
-                                </a>
+            <md-button class="md-primary md-raised" ng-click="showDialog($event)">Upload images</md-button>
+            
+            <div class="div-thumbsshell" layout="row">
+                <div class="div-thumbswrapper">
+                    <ul class="ul-list-image" id="listImage" layout="row">
+                        <li ng-repeat="image in uploadedImages" style="width: 99.969px">
+                            <div style="width: 99.969px">
+                                <img ng-mouseenter="showIt()" ng-mouseleave="hideIt()" class="img-dashboard-upload" ng-src="{{image}}"/>
+                                <md-button ng-mouseenter="showIt()" ng-mouseleave="hideIt()" ng-show="showButton" ng-click="deleteImage(image)" class="md-button-show-hiden-mouse-enter-leave md-fab md-mini md-warn">
+                                    <md-icon style="font-size: 18px; width: 18px; height: 18px;">close</md-icon>
+                                </md-button>
                             </div>
                         </li>
                     </ul>
                 </div>
-            </div>-->
+            </div>
         </form>
     </md-content>
 </div>

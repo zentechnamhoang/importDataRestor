@@ -2,12 +2,11 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="/js/bower_components/angular-ui-tree/dist/angular-ui-tree.css">
+<link href="/js/bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css"/>
 <link rel="stylesheet" href="/css/app_dashboard.css">
 <div ng-app="ZentechRestor" class="div-dashboard" id="div-dashboard-super-container">
     <div ui-view layout="row" class="div-dashboard"></div>
 </div>
-
-
 
 <script src="/js/bower_components/angular/angular.js"></script>
 <script src="/js/bower_components/angular-animate/angular-animate.js"></script>
@@ -18,6 +17,7 @@
 <script src="/js/bower_components/angular-img-cropper/dist/angular-img-cropper.min.js"></script>
 <script src='http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js'></script>
 <script type="text/javascript" src="/js/bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+<script type="text/javascript" src="/js/bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
 
 <!--my scripts-->
 

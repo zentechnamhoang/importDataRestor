@@ -39,30 +39,3 @@ myApp.factory('menu', ['$location', function ($location) {
             (a.humanName > b.humanName) ? 1 : 0;
         }
 }]);
-myApp.service('settingTreeView', function() {
-    this.remove = function (scope) {
-        scope.remove;
-    };
-    this.toggle = function (scope) {
-        scope.toggle();
-    };
-    this.moveLastToTheBeginning = function () {
-        // variable a is nodes
-        var a = this.data.pop();
-        this.data.splice(0, 0, a);
-    }
-    this.newSubItem =function (scope) {
-        var nodeData = scope.$modelValue;
-        nodeData.nodes.push({
-          id: nodeData.id * 10 + nodeData.nodes.length,
-          title: nodeData.title + '.' + (nodeData.nodes.length + 1),
-          nodes: []
-        });
-    }
-    this.colapseAll = function () {
-        this.$broadcast('angular-ui-tree:collapse-all');
-    }
-    this.expandAll = function () {
-        this.$broadcast('angular-ui-tree:expand-all');
-    };
-})

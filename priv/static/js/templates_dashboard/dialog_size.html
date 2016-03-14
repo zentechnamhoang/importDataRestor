@@ -1,0 +1,93 @@
+<md-dialog>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Size</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon aria-label="Close dialog" class="md-icon-close">close</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content class="">
+        <div class="md-dialog-content">
+            <h2>Direction</h2>
+            <p>1/ Press </p>
+            <p>2/  </p>
+            
+            <div>
+                <md-table-container>
+                    <table md-table>
+                        <thead md-head>
+                            <tr md-row>
+                                <th md-column>#</th>
+                                <th md-column>Name size</th>
+                                <th md-column>Price</th>
+                                <th md-column>Interaction</th>
+                            </tr>
+                        </thead>
+                        <tbody md-body>
+                            <tr md-row ng-repeat="price in pricePoints">
+                                <td md-cell>{{$index + 1}}</td>
+                                <td md-cell>{{price.name}}</td>
+                                <td md-cell>{{price.price + " " + price.currencyUnit}}</td>
+                                <td md-cell>
+                                    <a style="text-transform: none; color: #00aeef; font-size: 14px; text-decoration: none;cursor: pointer;padding-right: 4px;" ng-click="removeOnePricePoint(price.id)">remove</a>
+                                    <span>|</span>
+                                    <a style="text-transform: none; color: #00aeef; font-size: 14px; text-decoration: none;cursor: pointer;" ng-click="editOnePricePoint(client.id);">edit</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+                
+                <form name="formDashboardSize">
+                    <div layout="row">
+                        <div class="div-dashboard-price-point">
+                            <md-input-container>
+                                <label>Name</label>
+                                <input ng-model="nameSize" type="text" name="nameSize" ng-change="change()" required=""/>
+                            </md-input-container>
+                            <div ng-messages="formDashboardSize.nameSize.$error" ng-if='formDashboardSize.nameSize.$dirty'>
+                                <div ng-message="required">You can not leave this empty.</div>
+                            </div>
+                        </div>
+                        <div class="div-dashboard-price-point">
+                            <md-input-container>
+                                <label>Price</label>
+                                <input ng-model="priceSize" type="text" name="priceSize" ng-change="change()" required=""/>
+                            </md-input-container>
+                            <div ng-messages="formDashboardSize.priceSize.$error" ng-if='formDashboardSize.priceSize.$dirty'>
+                                <div ng-message="required">You can not leave this empty.</div>
+                            </div>
+                        </div>
+                        <div class="div-dashboard-price-point">
+                            <md-input-container>
+                                <label>Currency</label>
+                                <md-select ng-model="currencyUnitSize">
+                                    <md-option ng-repeat="currency in moreCurrency" value="{{currency.unit}}" class="md-option-size-optionset">
+                                        {{currency.unit}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                        <div>
+                            <md-button class="md-primary" ng-click="addOneMorePricePoint()" ng-disabled="formDashboardSize.$invalid">
+                                Create new price point
+                            </md-button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="saveSize()">
+            Save
+        </md-button>
+        <md-button ng-click="cancel()">
+            Cancel
+        </md-button>
+    </md-dialog-actions>
+    
+</md-dialog>

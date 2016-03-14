@@ -56,10 +56,15 @@
     margin: 0 10px;
     color: sandybrown;
 }
-.md-toolbar.md-default-theme:not(.md-menu-toolbar), md-toolbar:not(.md-menu-toolbar) {
+md-toolbar:not(.md-menu-toolbar) {
     background-color: #333333;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5), 0 0 4px 0 rgba(0, 0, 0, 0.45);
 }
+md-toolbar.md-menu-toolbar{
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px;
+}
+
 .link-header-sidnav {
     text-decoration: none;
 }
@@ -189,20 +194,10 @@ md-sidenav {
 }
 .md-content-dashboard {
     background-color: #efefef;
+    margin: 10px;
 }
-.md-button-icon-tree-view {
-    width: 24px;
-    height: 24px;
-    padding: 0px;
-    min-width: 0;
-    min-height: 0px;
-    line-height: 0px;
-    margin: auto 8px auto auto;
-}
-.close {
-    margin: auto 8px auto 0;
-}
-.md-button-icon-mini.md-button.md-fab {
+
+.md-button-icon-mini.md-icon-button {
     width: 36px;
     height: 36px;
     padding: 0px;
@@ -210,7 +205,6 @@ md-sidenav {
 }
 
 .tree-node {
-    height: 50px;
     border: 1px solid #dae2ea;
     background: #f8faff;
     color: #7c9eb2;
@@ -220,9 +214,6 @@ md-sidenav {
     background-color: #f2dede;
 }
 
-.tree-node-content {
-    margin: 10px;
-}
 .tree-handle {
     background: #428bca;
     color: #FFF;
@@ -249,9 +240,15 @@ md-sidenav {
 }
 
 .angular-ui-tree-handle:hover {
-    color: #438eb9;
-    background: #f4f6f7;
-    border-color: #dce2e8;
+    color: #104E8B;
+    background: #ADD8E6;
+    border-color: #9AC0CD;
+}
+
+.angular-ui-tree-handle-selected{
+    color: #104E8B;
+    background: #ADD8E6;
+    border-color: #9AC0CD;
 }
 
 .angular-ui-tree-placeholder {
@@ -295,4 +292,42 @@ md-input-container {
     padding-left: 0;
     padding-right: 0;
     width: 100%;
+}
+.div-dashboard-container-content {
+    padding: 10px;
+}
+.tree-view {
+    border-right: 4px gray groove
+}
+.img-dashboard-upload {
+    width: 60px;
+    height: 60px;
+}
+.md-button-show-hiden-mouse-enter-leave.md-fab.md-mini.md-warn {
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    margin: -50% 0 0 -50%;
+}
+.ul-list-image {
+    list-style: none;
+    padding: 0;
+}
+.div-thumbsshell {
+    width: 80%;
+    margin: 10px;
+}
+
+.div-thumbswrapper {
+    overflow-x: scroll;
+    width: 75%;
+}
+
+.md-content-container-menu-item {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    margin: 0 10px 10px 10px;
+}
+.div-dashboard-price-point {
+    margin: 0 3px;
 }

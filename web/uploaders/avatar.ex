@@ -22,7 +22,7 @@ defmodule RestaurantImportInfo.Avatar do
   def __storage, do: Arc.Storage.Local
 
   def storage_dir(_, {file, scope}) do
-    "uploads/avatars/#{scope.id}"
+    "priv/static/images/avatars/#{scope.id}"
   end
 end
 

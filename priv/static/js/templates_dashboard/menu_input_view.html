@@ -10,7 +10,7 @@
                 </div>
                 <div flex >
                     <md-input-container md-no-float>
-                        <input ng-model="node.title" type="text" name="menuName" required="" placeholder="Enter menu name">
+                        <input ng-model="node.name" type="text" name="menuName" required="" placeholder="Enter menu name">
                         <div ng-messages="formDashboardInputInfo.menuName.$error" ng-if='formDashboardRestaurantInfo.menuName.$dirty'>
                             <div ng-message="required">You can not leave this empty.</div>
                         </div>
@@ -19,11 +19,11 @@
             </div>
             <div layout="row" class="div-field-input">
                 <div flex="33" class="div-title-field">
-                    <span class="span-title-field">Status</span>
+                    <span class="span-title-field">Menu Status</span>
                 </div>
                 <div flex >
                     <md-input-container md-no-float>
-                        <input ng-model="node.title" type="text" name="menuStatus" required="" placeholder="Enter menu status">
+                        <input ng-model="node.status" type="text" name="menuStatus" required="" placeholder="Enter menu status">
                         <div ng-messages="formDashboardInputInfo.menuStatus.$error" ng-if='formDashboardRestaurantInfo.menuStatus.$dirty'>
                             <div ng-message="required">You can not leave this empty.</div>
                         </div>
