@@ -16,11 +16,24 @@ myApp.controller('MenuBarController', ['$rootScope','$log', '$state','$timeout',
         },300);
         return debounceFn;
     }
+    
+    $scope.listRestaurantSections = [{city: '', name: '',state: 'menu."city"."resId"'}]
+    
     var mc = this;
     //functions for menu-link and menu-toggle
     mc.isOpen = isOpen;
     mc.toggleOpen = toggleOpen;
     mc.autoFocusContent = false;
+    menu.sections.push({
+        name: 'Ha Noi',
+        type: 'toggle',
+        icon: 'home',
+        pages: [{
+            name: 'Pho 24 chi nhanh 3',
+            state: 'menu.restaurant.restaurant1',
+            type: 'link'
+        }]
+    });
     mc.menu = menu;
 
     mc.status = {
@@ -36,4 +49,6 @@ myApp.controller('MenuBarController', ['$rootScope','$log', '$state','$timeout',
     function toggleOpen(section) {
         menu.toggleSelectSection(section);
     }
+    
+    
 }]);

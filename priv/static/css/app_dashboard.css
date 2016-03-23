@@ -5,6 +5,12 @@
     .md-icon-button.md-button.md-ink-ripple.hide-gt-sm {
         margin-top: 6px;
     }
+    .md-dialog-add-new-menu{
+        width: 400px;
+    }
+    .md-toolbar-dialog-map {
+        width: 400px;
+    }
 }
 @media (min-width: 768px) and (max-width: 991px) {
     .md-toolbar-header {
@@ -12,6 +18,12 @@
     }
     .md-icon-button.md-button.md-ink-ripple.hide-gt-sm {
         margin-top: 7px;
+    }
+    .md-dialog-add-new-menu{
+        width: 500px;
+    }
+    .md-toolbar-dialog-map {
+        width: 600px;
     }
 }
 @media (min-width: 992px) and (max-width: 1199px) { 
@@ -21,6 +33,12 @@
     .md-icon-button.md-button.md-ink-ripple.hide-gt-sm {
         margin-top: 7px;
     }
+    .md-dialog-add-new-menu{
+        width: 550px;
+    }
+    .md-toolbar-dialog-map {
+        width: 800px;
+    }
 }
 @media (min-width: 1200px) {
     .md-toolbar-header {
@@ -28,6 +46,12 @@
     }
     .md-icon-button.md-button.md-ink-ripple.hide-gt-sm {
         margin-top: 7px;
+    }
+    .md-dialog-add-new-menu{
+        width: 700px;
+    }
+    .md-toolbar-dialog-map {
+        width: 900px;
     }
 }
 
@@ -331,3 +355,16 @@ md-input-container {
 .div-dashboard-price-point {
     margin: 0 3px;
 }
+.div-dashboard-menuItem-pricepoint {
+    border-right: 1px  black groove;
+}
+.md-checkbox-dashboard-status {
+    margin-top: 8px;
+}
+md-checkbox.md-checked .md-icon {
+    background-color: #EE7621;
+}
+.md-content.md-default-theme, md-content #create-restaurant{
+    background-color: rgba(0, 0, 0, 0);
+}
+.angular-google-map-container { height: 400px; width: 100%;}

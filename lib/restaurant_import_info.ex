@@ -5,7 +5,11 @@ defmodule RestaurantImportInfo do
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
-
+    
+    config_wrapper = Application.get_env(:restaurant_import_info, :backend)
+    type_wrapper   = Dict.get(config_wrapper, :type)
+    settings_wrapper = %{base_url: Dict.get(config_wrapper, :base_url)}
+    
     children = [
       # Start the endpoint when the application starts
       supervisor(RestaurantImportInfo.Endpoint, []),
@@ -13,6 +17,7 @@ defmodule RestaurantImportInfo do
       worker(RestaurantImportInfo.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(RestaurantImportInfo.Worker, [arg1, arg2, arg3]),
+        worker(RestaurantImportInfo.BackendWrapper.Worker, [type_wrapper, settings_wrapper, [name: :default_wrapper]])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

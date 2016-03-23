@@ -1,49 +1,214 @@
-<script type="text/ng-template" id="nodes_renderer.html">
-    <div  ui-tree-handle class="tree-node tree-node-content" layout="row">
-        <md-button class="md-button-icon-mini md-fab md-raised" ng-if="node.nodes && node.nodes.length > 0" data-nodrag ng-click="toggle(this)">
-            <md-icon class="md-toggle-icon" style="color: rgb(63,81,181)" ng-show="collapsed">expand_less</md-icon>
-            <md-icon class="md-toggle-icon" style="color: rgb(63,81,181)" ng-hide="collapsed">expand_more</md-icon>
-        </md-button>
-        <div class="div-title-tree-view">{{node.title}}</div>
-        <md-button class="md-button-icon-tree-view md-raised md-primary" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;">
-            <md-icon>add</md-icon>
-        </md-button>
-        <md-button class="md-button-icon-tree-view close md-raised md-warn" data-nodrag ng-click="remove(this)">
-            <md-icon>close</md-icon>
-        </md-button>
+<div>
+    <h1>Create New Restaurant</h1>
+    <h3>Required Information</h3>
+    <div>
+        <md-content id="create-restaurant">
+            <div>
+                <md-input-container>
+                    <label>Name</label>
+                    <input ng-model="restaurant.name">
+                </md-input-container>
+            </div>
+            <md-button class="md-primary md-raised" ng-click="showDialogUploadImage($event)">Upload images</md-button>
+            
+            <div class="div-thumbsshell" layout="row">
+                <div class="div-thumbswrapper">
+                    <ul class="ul-list-image" id="listImage" layout="row">
+                        <li ng-repeat="image in uploadedImages" style="width: 99.969px">
+                            <div style="width: 99.969px">
+                                <img ng-mouseenter="showIt()" ng-mouseleave="hideIt()" class="img-dashboard-upload" ng-src="{{image}}"/>
+                                <md-button ng-mouseenter="showIt()" ng-mouseleave="hideIt()" ng-show="showButton" ng-click="deleteImage(image)" class="md-button-show-hiden-mouse-enter-leave md-fab md-mini md-warn">
+                                    <md-icon style="font-size: 18px; width: 18px; height: 18px;">close</md-icon>
+                                </md-button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <label>Address of restaurant</label>
+                <div>
+                    <md-input-container>
+                        <label>Address</label>
+                        <input ng-model="restaurant.address">
+                    </md-input-container>
+                </div>
+                <div layout="row" layout-margin>
+                    <country-state-select country="myCountryModel" state="myStateModel" country-label="The country : " country-select-label="Select your country" state-label="The state : "  ></country-state-select>
+                    
+                    <div>
+                        <md-input-container>
+                            <label>City</label>
+                            <input ng-model="restaurant.city">
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            
+            <md-button class="md-primary md-raised" ng-click="showDialogMap($event)">Confirm address</md-button>
+            
+            <div>
+                <md-button ng-click="showDialogTypesOfRes($event)">
+                    Chosen Types Of Restaurant
+                </md-button>
+                <md-list>
+                <md-item ng-repeat="type in listTypesOfRes">
+                    <div layout="row">
+                        <div class="md-tile-content">
+                            <span>{{type.type}}</span>
+                        </div>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-item>
+            </md-list>
+            </div>
+            
+            <div>
+                <label>Supports</label>
+                <div>
+                    <md-checkbox ng-model="isDinein" aria-label="Dine in">
+                        Dine in
+                    </md-checkbox>
+                    <md-checkbox ng-model="isBooking" aria-label="Booking">
+                        Booking
+                    </md-checkbox>
+                    <md-checkbox ng-model="isDelivery" aria-label="Delivery">
+                        Delivery
+                    </md-checkbox>
+                    <md-checkbox ng-model="isPickup" aria-label="Pick up">
+                        Pick up
+                    </md-checkbox>
+                    <md-checkbox ng-model="isCheckin" aria-label="Check in">
+                        Check in
+                    </md-checkbox>
+                    <md-checkbox ng-model="isDrivethrough" aria-label="Drivethrough">
+                        Drivethrough
+                    </md-checkbox>
+                </div>
+            </div>
+            <div>
+                <label>POS type</label>
+                <div>
+                    <md-checkbox ng-model="isBNB" aria-label="Checkbox 1">
+                        BNB
+                    </md-checkbox>
+                    <md-checkbox ng-model="isSquare" aria-label="Checkbox 1">
+                        Square
+                    </md-checkbox>
+                </div>
+            </div>
+            
+            <div>
+                <label>Timezone</label>
+                <div>
+                  <timezone></timezone>
+                </div>
+            </div>
+            <div>
+                <md-input-container>
+                    <label>Tax</label>
+                    <input ng-model="restaurant.tax">
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <div>
+                    Tips
+                </div>
+                <div>
+                    <md-checkbox ng-model="isTipOne" aria-label="Checkbox 1">
+                        10%
+                    </md-checkbox>
+                    <md-checkbox ng-model="isTipTwo" aria-label="Checkbox 1">
+                        15%
+                    </md-checkbox>
+                    <md-checkbox ng-model="isTipThree" aria-label="Checkbox 1">
+                        20%
+                    </md-checkbox>
+                </div>
+            </div>
+            <div>
+                <div>
+                    Fees
+                </div>
+                <div>
+                    <div layout="row">
+                        <div>
+                            <md-checkbox ng-model="isFeeOne" aria-label="Checkbox 1">
+                            </md-checkbox>
+                        </div>
+                        <div flex>
+                            <md-slider-container>
+                                <md-slider ng-disabled="!isFeeOne" ng-model="feeOne" aria-label="Fee One" flex="" md-discrete="" ng-readonly="readonly"></md-slider>
+                            </md-slider-container>
+                        </div>
+                        <div>
+                            <md-input-container>
+                                <input flex="" ng-disabled="!isFeeOne" type="number" ng-model="feeOne" aria-label="green" aria-controls="green-slider">
+                            </md-input-container>
+                        </div>
+                        
+                    </div>
+                    <div layout="row">
+                        <div>
+                            <md-checkbox ng-model="isFeeTwo" aria-label="Checkbox 1">
+                            </md-checkbox>
+                        </div>
+                        <div flex>
+                            <md-slider-container>
+                                <md-slider ng-disabled="!isFeeTwo" ng-model="feeTwo" aria-label="Disabled 1" flex="" md-discrete="" ng-readonly="readonly"></md-slider>
+                            </md-slider-container>
+                        </div>
+                        <div>
+                            <md-input-container>
+                                <input flex="" ng-disabled="!isFeeTwo" type="number" ng-model="feeTwo" aria-label="green" aria-controls="green-slider">
+                            </md-input-container>
+                        </div>
+                        
+                    </div>
+                    <div layout="row">
+                        <div>
+                            <md-checkbox ng-model="isFeeThree" aria-label="Checkbox 1">
+                            </md-checkbox>
+                        </div>
+                        <div flex>
+                            <md-slider-container>
+                                <md-slider ng-disabled="!isFeeThree" ng-model="feeThree" aria-label="Disabled 1" flex="" md-discrete="" ng-readonly="readonly"></md-slider>
+                            </md-slider-container>
+                        </div>
+                        <div>
+                            <md-input-container>
+                                <input flex="" ng-disabled="!isFeeThree" type="number" ng-model="feeThree" aria-label="green" aria-controls="green-slider">
+                            </md-input-container>
+                        </div>
+                        
+                    </div>
+                     <div>
+                        <md-checkbox ng-model="useCash" aria-label="Cash">
+                            <div>Cash</div>
+                            <img class="icon icons8-Money" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACvUlEQVRoQ+2Yz2sTQRTHv9vtJpsf9EcQY4uxISFC1WgERdRCF+xJD/YiePRPyEmEXPp/CKLevHv06E1BsYJgsYI/kChYChV/tV15nWzNxpn90b6mWZyBwCZ5M/s+7/tm5s0YSHgzEu4/NMB+K6gV0ArsMgK+FHKfPnJ3OR5L9/XS8cBxrOLEtt8agCXkPYNoBZRR/fUDaL8HVtrCZLwIFEtAymYVYm8U+L4GLL8ENtb9zprDQOUEkMmzQfADkNNLzwFSQNZIgVoDIBiGxg/wtQ18WAp27XANKBQZ3Af4AZYXgbXVYOfyo0ClPqAALx5Hc+zkTDS7ECt+BTRAPGH4FYgzB76tAm8W1R7TSpUbBUo15arFDxBnFfryEfj0NjzkIwWgfExqxw9A+8DrZ8Dvn3LHrDRw9LSI6Ksnarvu3tRn+myfAOg1tBNTamxu+F86ZALVutiJoyjl9e6rAt5Lt2qhd8DK504tdBAoHhG1kKrUkMXYzok5oCg/+FMoPKNZLTQAazh3MNh/rMCdhf071IfUUcaZOekdlv9Qn3iA5iWJAvRTh9M0/136LBtIpUWm00aWyYlnOx/vgMOigBQgyiz0ID3+LmFpjyBAD5TODVvPPedoDgCZq27TaQDDY+K/zTIA+tD3hng2puSI3WIqrmDL04BpCaXqFwPP1ZHmQJRYyyHnnA4cQTUAYzYYqgM0WfGbUX10YELcdhQO+VTaU4AAKAeAowTqBegd6NT56zBzt5DN140LV6Q3Bn25XnebzhgwNA8Y8wCubvsZAmDcvB3qX6jBTtNK1e8vDG5gsqpINdF7IAG6wdzWtRmkrbuw7Cpoie5pAw/g+eu2Lk8hNXIPqexsN0hiAHwg6fEHsLPnEpFCynlCqZXNPDRa9zv7j3om9n0Scy8KGoA7onHH0wrEjRi3vVaAO6Jxx/sDacr2Mc0VYrwAAAAASUVORK5CYII=" width="48" height="48">
+                        </md-checkbox>
+                        <md-checkbox ng-model="useVisa" aria-label="Visa">
+                            <div>Visa</div>
+                            <img class="icon icons8-Visa" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAD6ElEQVRoQ+1ZXUgUURT+BjfKDBW0DHLNatOghdY2iLYgzV4KIgnChSB9qO0PsiCpQOnBhSCl0ocI9cGEqN6soKAoC3IxSNpAKcXA2oJ+Vlyj0mBk4tz1DnfGndDdsbWYAWHnzt5zzvdzzg5XCf/4Jf3j9cMCkGwFLQUsBRJkwLJQggQmvH2KApmHO/NtE9IlCXAByE84gzkBhhQgKKcoJyNXS4bEkBoArHhZeilJyDQnr7lRFAUR2aYUiSA0ALIPdHZIkrTb3LTmRlMU5Xa4taSMR9UBeDIyV9kXaBj62lK8IiaAxQefKObyNTvRvrYUq8RrFLAAzA7hU6JaCvwlog3T/P8KpM/7jp15AXhXPoQyOZd6R1aitueIhpXBxi1IT01ha46qLrQfc8JTkMHuyxpeITAQQXqqDb7SZdhcmMn+6OoNfcfNwGc0P/qgxvMUZKLj1Dr13n32OULD4zFVmLYC9rRPuLf3OnLkByxQxdNzuB/ysM87XNm4dnQt+0zFHG97g8e1G+C0p7G1Jb6nrHgqymlfNKWQ5kcfUXNrUF1vqlwDrydHva+40of7wXBiAGi3rzQX/uIuoN+Hptf74e/Zx4KKCTnbX5q3smffxibgqHqmARkYGMWFO9HXGAJEKpBCdNmzFqDn/EZNsfV336H+rua1R30+bQV4sse1buBzO0J9rXDfrGOBuH1Cw7/gPtvNimLfA0DFljUEUb0rH9W7lrO1G4FPqGrrj8ko/x4BH/0pw541X40Ra8OMAIjFjgxcRGGDW8Nsza23zMuih7k99L7u6o+AmOXM8+I4GbSP1NjhymJAVp/oStxCFOHaUScLCjmCojPdOL2nSPUrNe+3MVnDNgdFe0UVeDWiPbyepWiqLGSPttX1MHK4akaNPGMFWB+Ur2JJyO80bWj68OY16gleMLHqL3dESZi8qFjqA974vaEf2Fb3QqOkUSPPGIDob0rKp4qYoOOUSx2hRszpG5+w8NH5fngcofA4Mhba1PhGjTxjAGIfcAZ58+p9TPc0Qglk+aYckO9Hx2RkpNrg9zqQl7WATan1Z7qZKuLo1BueDwP9elwA1D6YjCayQ/N+sHGz4QQSC6DiaUJRk/LRSfYRZz71Af2eGDVyXADEZqOCRJuI04b3BRVxaHuuaitSjIqk3wJ90+u9LjZ+LDvGBSDmPEvSogUgScSraS0F5qwC2Qc7IxKk6Av9HL0URXkXbi1RTwz/r4Ot6LkognNVBQXKqJwCl+HRIrkmej6KywBckiRFX+aTfJFtQIe7Npz44+FukuuMK731D464aDNxk6WAiWTGFcpSIC7aTNxkKWAimXGF+g19hwtPQPT7ugAAAABJRU5ErkJggg==" width="48" height="48">
+                        </md-checkbox>
+                        <md-checkbox ng-model="useDebit" aria-label="Debit">
+                            <div>Debit</div>
+                            <img class="icon icons8-Bank-Cards" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACQklEQVRoQ+2Zu04CQRSG/xnxAl4LaSwAE01sTLAwxsJbYYzZQrEyamGxD4BPYHwB9QEwsdFSoNgYOy+VlTyAhbTaYKHGBHbMYjCKu2SH3Z0RM1MRYHbOd/5zzp6zS9Dii7S4/VAAshVUCrScAtvnb4k2kx0ASBIgERQAAx4AFCqU7Bwvh63PtosrhKrGV8w7QshAUIbXX5cxVqq00QknCC4A3XjNAVgRZfy3c/IZLbJqdy4nwEsJIP2iAaxwOtIiwz4AvDLRxtfOy2gRW2dzKTC1tCIN4PYirwCgFPCQQL6EkG60eBL/G4DdmU4PwcC3de/mvbrBlzJaU0ABcIjgSYH51fMEg1ntPEGC6zyjg2HEYn3Y2hhDNBr+gdc0wKfxlTsI7DxpRwix1CTae7t+acSdA7MpI0ckdJ7d8UEMLY57B5hLGSUAwjvPUE8XhtenfQGQ1riN6gs/ABhQPNIittOfYzc6lzJ8B8hs7mAkWvzl3fvHBPTT/a/v6wEA8A80QQBcptccC+j84ZkDAHsuU5rkHillA1hhQ4BCmZJ0U0O9TICrrOZ60BKaA25D6M8COCbxUxz6iXXD/1x/FsBtC6QALE8FkcRKARsPCK1CUhSwK321u2YQv/lehYIwstE1/QSQ0k4DKF5lNdfvHRxzQNZAw4D8dVazfZTO9XS6OlISsyB4qHkmjCYvc8uOb2TqIRo2TRaEScxDYg31QNxtFWnif0UGFCijaR7jrXNcd31NGCVkiwIQ4uYGhygFlAIePfABAaD9MSeSflsAAAAASUVORK5CYII=" width="48" height="48">
+                        </md-checkbox>
+                        <md-checkbox ng-model="useCheque" aria-label="Cheque">
+                            <div>
+                                Cheque
+                            </div>
+                            <img class="icon icons8-Invoice" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABG0lEQVRoQ2NkGOKAcYi7n2HUAwMdg6MxMBoDFIbA8EpCR0+9/E9hgNBFu7WZODzgUWJg1AN0CX8GBrJioKr9DJ2cB7GmrdIEp30j0wN0DX4ClpEVA6MeoGIIEBUDt+59pKKVlBulpsQPN2RkecDTSQYj+Lbve8KATZzUcCbGHJAaECA7BkY9gCdaRmOAgQG1T4zcmIOVQkM+CZGaMWmlfjQTI4csMZmPmJggxpzRYnTIZ+Ih7wFi0jI91JBdCtHDccTYQbIHiDF0oNQQ1ZweKMcRY++oB4gJJWLUkDJUgzzMMmhiYMh7gJhYwqZm0MTAqAfQOzTkhshA6hteExwDGZLk2j0aA+SGHLX0jcYAtUKSXHNGY4DckKOWPgC01A9ATy++QAAAAABJRU5ErkJggg==" width="48" height="48">
+                        </md-checkbox>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <md-button class="md-primary md-raised">
+                Save
+            </md-button>
+        </md-content>
     </div>
-    <ol ui-tree-nodes="" ng-model="node.nodes" ng-hide="collapsed">
-        <li class="li-non-number" ng-repeat="node in node.nodes" ui-tree-node>
-            <div ng-include="'nodes_renderer.html'"></div>
-        </li>
-    </ol>
-</script>
-
-<div class="row">
-  <div class="col-sm-12">    
-    <md-button class="md-button-dashboard md-raised md-primary" ng-click="expandAll()">Expand all</md-button>
-    <md-button class="md-button-dashboard md-raised md-primary" ng-click="collapseAll()">Collapse all</md-button>
-  </div>
-</div>
-
-<div layout="row">
-  <div class="col-sm-6" flex>
-    <div ui-tree="treeOptions" id="tree-root">
-      <ol ui-tree-nodes ng-model="data">
-        <li class="li-non-number" ng-repeat="node in data" ui-tree-node>
-            <div  ng-include="'nodes_renderer.html'"></div>
-        </li>
-      </ol>
-    </div>
-  </div>
-
-  <div class="col-sm-6" flex>
-    <div class="info" ng-switch on="node.type">
-        <div ng-switch-when="restaurant" restaurant-directive></div>
-        <div ng-switch-when="menu" menu-directive></div>
-        <div ng-switch-when="menuCategory" menu-category-directive></div>
-        <div ng-switch-when="menuItem" menu-item-directive></div>
-    </div>
-   
-  </div>
 </div>

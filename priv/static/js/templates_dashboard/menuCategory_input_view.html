@@ -22,15 +22,10 @@
                     <span class="span-title-field">Menu Category Status</span>
                 </div>
                 <div flex >
-                    <md-input-container md-no-float>
-                        <input ng-model="node.status" type="text" name="menuCategoryStatus" required="" placeholder="Enter menu Category status">
-                        <div ng-messages="formDashboardInputInfo.menuCategoryStatus.$error" ng-if='formDashboardRestaurantInfo.menuCategoryStatus.$dirty'>
-                            <div ng-message="required">You can not leave this empty.</div>
-                        </div>
-                    </md-input-container>
+                    <md-checkbox ng-model="node.status" aria-label="status" class="md-checkbox-dashboard-status md-primary"></md-checkbox>
                 </div>
             </div>
-            <md-button class="md-primary md-raised" ng-click="showDialog($event)">Upload images</md-button>
+            <md-button class="md-primary md-raised" ng-click="showDialogUploadImage($event)">Upload images</md-button>
             
             <div class="div-thumbsshell" layout="row">
                 <div class="div-thumbswrapper">

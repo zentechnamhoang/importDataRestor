@@ -11,6 +11,7 @@ defmodule RestaurantImportInfo.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
   end
 
   scope "/", RestaurantImportInfo do
@@ -26,6 +27,11 @@ defmodule RestaurantImportInfo.Router do
     
     scope "/upload" do
         post "/uploadfile", UploadController, :upload_file
+    end
+    
+    scope "/dashboard" do
+        
+        post "/login", DashboardController, :login
     end
   end
 end

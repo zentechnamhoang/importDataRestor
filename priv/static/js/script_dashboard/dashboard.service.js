@@ -7,11 +7,8 @@ myApp.service("uploadFile", ['$http', function ($http) {
     }
 }]);
 myApp.service("dialog", ['$mdMedia', '$mdDialog', function ($mdMedia, $mdDialog) {
-    
-    
-    this.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
     this.showDialog = function(ev, templateUrl) {
-        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && this.customFullscreen;
+        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'))  && $mdMedia('xs') || $mdMedia('sm');
         $mdDialog.show({
             controller: DialogController,
             templateUrl: templateUrl,
@@ -52,5 +49,38 @@ myApp.service('utilFunction', function () {
         }
         return position;
     }
-       
+    
 })
+
+myApp.service('restAPI', function($http){
+    this.post = function(params, path) {
+        return $http.post(path, params, {headers:{"Content-Type": "application/json"}})
+    }
+    this.get = function(path) {
+        return $http.get(path, {headers:{"Content-Type": "application/json"}})
+    }
+    this.put = function(params, path) {
+        return $http.put(path, params, {headers:{"Content-Type": "application/json"}})
+    }
+});
+myApp.service('productService', function() {
+  var productList = [];
+
+  var addProduct = function(newObj) {
+      productList = [];
+      productList.push(newObj);
+  };
+
+  var getProducts = function(){
+      return productList;
+  };
+
+  return {
+    addProduct: addProduct,
+    getProducts: getProducts
+  };
+
+});
+
+
+

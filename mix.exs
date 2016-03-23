@@ -19,7 +19,7 @@ defmodule RestaurantImportInfo.Mixfile do
   def application do
     [mod: {RestaurantImportInfo, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :httpoison]]
   end
 
   # Specifies which paths to compile per environment.
@@ -36,7 +36,10 @@ defmodule RestaurantImportInfo.Mixfile do
      {:phoenix_html, "~> 2.1"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:arc, "~> 0.5.1"}]
+     {:arc, "~> 0.5.1"},
+     {:jazz, "~> 0.2.1"},
+     {:httpoison, "~> 0.8.0"},
+     {:poison, "~> 1.5.2"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

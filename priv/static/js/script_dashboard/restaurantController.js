@@ -1,5 +1,6 @@
 var myApp = angular.module('restaurant.controller');
- myApp.controller('restaurantController', ['$scope', '$rootScope', '$mdDialog', '$mdMedia', 'dialog', 'utilFunction', function ($scope, $rootScope, $mdDialog, $mdMedia, dialog, utilFunction) {
+ myApp.controller('restaurantController', ['$scope', '$rootScope', '$mdDialog', '$mdMedia', 'dialog', 'utilFunction', 'productService', function ($scope, $rootScope, $mdDialog, $mdMedia, dialog, utilFunction, productService) {
+     // config tree view
      $scope.remove = function (scope) {
         scope.remove();
     };
@@ -19,7 +20,8 @@ var myApp = angular.module('restaurant.controller');
             case "menu":
                 scope.$modelValue.nodes.push({
                     name: 'cate1',
-                    status: 'active',
+                    status: true,
+                    selected: false,
                     images: [],
                     type: 'menuCategory',
                     nodes: []
@@ -28,13 +30,24 @@ var myApp = angular.module('restaurant.controller');
             case "menuCategory":
                 scope.$modelValue.nodes.push({
                     name: 'item1',
-                    status: 'active',
+                    status: true,
+                    selected: false,
                     images: [],
                     type: 'menuItem'
                 });
                 break;
         };
     };
+    
+    $scope.newMenu = function() {
+        $scope.data.push({
+            name: 'menu',
+            status: true,
+            selected: false,
+            type: 'menu',
+            nodes: [] 
+        });
+    }
 
     $scope.collapseAll = function () {
         $scope.$broadcast('angular-ui-tree:collapse-all');
@@ -73,20 +86,25 @@ var myApp = angular.module('restaurant.controller');
         }
     }
     
-    $scope.data = [{
+    // database
+    
+    $rootScope.data = [{
+        'id': '1',
         'name': 'menu',
-        'status': 'active',
+        'status': true,
         'selected': false,
         'type': 'menu',
         'nodes': [{
+            'id': '1',
             'name': 'cate',
-            'status': 'active',
+            'status': true,
             'selected': false,
             'images': [],
             'type': 'menuCategory',
             'nodes': [{
+                'id': '1',
                 'name': 'item',
-                'status': 'active',
+                'status': true,
                 'selected': false,
                 'images': [],
                 'type': 'menuItem',
@@ -94,6 +112,10 @@ var myApp = angular.module('restaurant.controller');
         }]
     }];
     
+    // add data menu item after create
+    
+    
+    // mouse enter-leave 
     
     // mouseenter event
     $scope.showIt = function () {
@@ -119,104 +141,41 @@ var myApp = angular.module('restaurant.controller');
         });
     }
     
-    $scope.showDialogAddSize = function(ev) {
-        dialog.showDialog(ev, '/js/templates_dashboard/dialog_size.html');
-    }
-    
-    $scope.showDialogAddOptionSet = function(ev) {
-        dialog.showDialog(ev, '/js/templates_dashboard/dialog_option.html');
-    }
+    //respository image
     
     $rootScope.uploadedImages = [];
+    
+    //button delete image
     $scope.deleteImage = function (image) {
         var position = $rootScope.uploadedImages.indexOf(image)
         $rootScope.uploadedImages.splice(position, 1)
     }
     
- }]);
- function DialogController($scope, $mdDialog, $rootScope, uploadFile, utilFunction) {
-    $scope.cancel = function() {
-        $mdDialog.cancel();
-    };
-    $scope.uploadImage = function() {
-        var fileName = document.getElementById("inputFile").files[0].name;
-        var file = utilFunction.dataURItoBlob(this.cropper.croppedImage)
-        var promise = uploadFile.uploadFileToUrl(file, '/api/upload/uploadfile', fileName)
-        promise.then(
-            function (data) {
-                if (data.data.result) {
-                    $rootScope.uploadedImages.push(data.data.data);
-                    $mdDialog.cancel();
-                }
-                else {
-                    //error
-                    $mdDialog.cancel();
-                }
-            },
-            function (error) {
-                //error
-                $mdDialog.cancel();
-            }
-        )
-    }
-    $scope.saveSize = function() {
-    }
-    $scope.saveOption = function() {
-    }
-    $scope.moreCurrency = ('USD VND').split(' ').map(function(unit) {return { unit: unit }; });
-    
-    $scope.addOneMorePricePoint = function() {
-        var date = new Date();
-        $scope.pricePoints.push({
-            'id': Date.parse(date),
-            'name': $scope.nameSize,
-            'price': $scope.priceSize,
-            'currencyUnit': $scope.currencyUnitSize
-        })
-        $scope.nameSize = "";
-        $scope.priceSize = "";
-        $scope.currencyUnitSize = "";
+    // button dialog add price point
+    $scope.showDialogAddSize = function(ev) {
+        dialog.showDialog(ev, '/js/templates_dashboard/dialog_size.html');
     }
     
-    $scope.addOneMoreOptionSet = function() {
-        var date = new Date();
-        $scope.optionSet.push({
-            'id': Date.parse(date),
-            'name': $scope.nameOption,
-            'price': $scope.priceOption,
-            'currencyUnit': $scope.currencyUnitOption
-        })
-        $scope.nameOption = "";
-        $scope.priceOption = "";
-        $scope.currencyUnitOption = "";
+    //button dialog add option set
+    $scope.showDialogAddOptionSet = function(ev) {
+        dialog.showDialog(ev, '/js/templates_dashboard/dialog_option.html');
     }
     
-    $scope.removeOnePricePoint = function(id) {
-        var position = utilFunction.indexOfObject(id, $scope.pricePoints);
-        $scope.pricePoints.splice(position, 1);
+    //button dialog add menu Item or menu category or menu
+    $scope.showDialogCreateNew = function(scope, ev) {
+        switch(scope.$modelValue.type) {
+            case "menu":
+                productService.addProduct(scope.$modelValue.id)
+                dialog.showDialog(ev, '/js/templates_dashboard/dialog_addCategory.html');
+                break;
+            case "menuCategory":
+                productService.addProduct(scope.$modelValue.id)
+                dialog.showDialog(ev, '/js/templates_dashboard/dialog_addItem.html');
+                break;
+        };
     }
     
-    $scope.removeOneOptionSet = function(id) {
-        var position = utilFunction.indexOfObject(id, $scope.optionSet);
-        $scope.optionSet.splice(position, 1);
-    }
-    
-    $scope.editOnePricePoint = function(id) {
-        var position = utilFunction.indexOfObject(id, $scope.pricePoints);
-        $scope.nameSize = $scope.pricePoints[position].name;
-        $scope.priceSize = $scope.pricePoints[position].price;
-        $scope.currencyUnitSize = $scope.pricePoints[position].currencyUnit;
-        $scope.pricePoints.splice(position, 1);
-    }
-    
-    $scope.editOneOptionSet = function(id) {
-        var position = utilFunction.indexOfObject(id, $scope.optionSet);
-        $scope.nameOption = $scope.optionSet[position].name;
-        $scope.priceOption = $scope.optionSet[position].price;
-        $scope.currencyUnitOption = $scope.optionSet[position].currencyUnit;
-        $scope.optionSet.splice(position, 1);
-    }
-    
+    // database price point and option set
     $scope.pricePoints = [{
         'id': 1,
         'name': 'Large',
@@ -242,7 +201,10 @@ var myApp = angular.module('restaurant.controller');
         'currencyUnit': 'USD'
     }]
     
+    $scope.longLat = utilFunction.getLongLatFromAddress("273 Điện Biên Phủ", "phường 7", "quận 3", "thành phố Hồ Chí Minh", "Việt Nam")
     
-}
+ }]);
+ 
+ 
 
 

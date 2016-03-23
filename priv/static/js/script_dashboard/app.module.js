@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   angular.module('common.services', []);
-  angular.module('home.controller', ['dashboard.directive']);
+  angular.module('home.controller', ['dashboard.directive', 'angularCountryState', 'uiGmapgoogle-maps']);
   angular.module('dashboard.directive', [])
   angular.module('dashboard.service', [])
   angular.module('restaurant.controller', ['dashboard.directive', 'dashboard.service'])

@@ -1,0 +1,27 @@
+<md-dialog>
+    <md-toolbar class="md-toolbar-dialog-map" >
+        <div class="md-toolbar-tools">
+        <h2>Confirm Address</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon aria-label="Close dialog" class="md-icon-close">close</md-icon>
+        </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div id="map_canvas">
+            <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" dorebuildall="true" control="map.control">
+                <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id" dorebuildall="true">
+                </ui-gmap-marker>
+            </ui-gmap-google-map>
+            <div layout="row">
+                <md-input-container flex>
+                    <label>&nbsp;</label>
+                    <input type="text" ng-model="address" placeholder="Only Address">
+                </md-input-container>
+                <md-button class="md-primary md-raised" ng-click="confirmAddress()">confirm</md-button>
+            </div>
+        </div>
+            
+    </md-dialog-content>
+</md-dialog>

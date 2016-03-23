@@ -18,7 +18,7 @@ config :restaurant_import_info, RestaurantImportInfo.Endpoint,
 config :restaurant_import_info, RestaurantImportInfo.Endpoint,
   live_reload: [
     patterns: [
-      ~r{priv/static/.*(js|css)$},
+      ~r{priv/static/.*(js|css|html)$},
       ~r{web/views/.*(ex)$},
       ~r{web/templates/.*(eex)$}
     ]
@@ -40,3 +40,7 @@ config :restaurant_import_info, RestaurantImportInfo.Repo,
   database: "restaurant_import_info_dev",
   hostname: "localhost",
   pool_size: 10
+  
+config :restaurant_import_info, :backend,
+    type: RestaurantImportInfo.BackendWrapper.Gateways.RestaurantImportInfoBackend,
+    base_url: "http://reminder.zentech.io/api/v1"

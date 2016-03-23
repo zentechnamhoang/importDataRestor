@@ -9,11 +9,15 @@ myApp.factory('menu', ['$location', function ($location) {
     }];
     
     sections.push({
-        name: 'Restaurant',
+        name: 'TP HCM',
         type: 'toggle',
         icon: 'home',
         pages: [{
-            name: 'Restaurant',
+            name: 'Pho 24 chi nhanh 1',
+            state: 'menu.restaurant.restaurant1',
+            type: 'link'
+        },{
+            name: 'Pho 24 chi nhanh 2',
             state: 'menu.restaurant.restaurant1',
             type: 'link'
         }]

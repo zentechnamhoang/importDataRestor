@@ -7,7 +7,7 @@
             </md-button>
             <div class="div-title-tree-view">{{node.name}}</div>
             <span flex></span>
-            <md-button class="md-button-icon-tree-view md-primary md-icon-button" data-nodrag ng-if="node.type != 'menuItem'" ng-click="newSubItem(this)" style="margin-right: 8px;">
+            <md-button class="md-button-icon-tree-view md-primary md-icon-button" data-nodrag ng-if="node.type != 'menuItem'" ng-click="showDialogCreateNew(this, $event)" style="margin-right: 8px;">
                 <md-icon>add</md-icon>
             </md-button>
             <md-button class="md-button-icon-tree-view md-warn md-icon-button" data-nodrag ng-click="remove(this)">
@@ -37,6 +37,7 @@
   <div class="col-sm-12">    
     <md-button class="md-button-dashboard md-raised md-primary" ng-click="expandAll()">Expand all</md-button>
     <md-button class="md-button-dashboard md-raised md-primary" ng-click="collapseAll()">Collapse all</md-button>
+    <md-button class="md-button-dashboard md-raised md-primary" ng-click="newMenu()">Add new menu</md-button>
   </div>
 </div>
 

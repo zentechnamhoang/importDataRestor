@@ -1,0 +1,24 @@
+<div layout="row">
+    <div flex>
+        <md-input-container>
+            <label>Country</label>
+            <md-select name="country" ng-model="country" ng-change="selectCountry()" required>
+                <md-option ng-repeat="theCountry in countries" value="{{theCountry}}">
+                    {{theCountry}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    
+    <div flex>
+        <md-input-container>
+            <label>State</label>
+            <md-select name="state" ng-model="countryState" ng-disabled="!states" >
+                <md-option ng-repeat="optStates in states track by $index" value="{{optStates}}">
+                    {{optStates}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    
+</div>

@@ -1,0 +1,57 @@
+<md-dialog class="md-dialog-add-new-menu">
+    <md-toolbar ng-show="!showSearch">
+        <div class="md-toolbar-tools">
+        <h2>Create Menu Category</h2>
+        <span flex></span>
+        <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
+            <md-icon>search</ng-md-icon>
+        </md-button>
+        <md-button aria-label="Create New" ng-click="createEmptyMenuCategory()">
+            New
+        </md-button>
+        </div>
+    </md-toolbar>
+    <md-toolbar ng-show="showSearch">
+        <div class="md-toolbar-tools">
+            <md-input-container flex>
+                <label>&nbsp;</label>
+                <input ng-model="search.name" placeholder="enter search">
+            </md-input-container>
+            <md-button aria-label="Search" class="md-icon-button" ng-click="showSearch = !showSearch">
+                <md-icon>search</ng-md-icon>
+            </md-button>
+            <md-button aria-label="Create New" ng-click="createEmptyMenuCategory()">
+                New
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <md-list>
+                <md-item ng-repeat="category in listMenuCategoryDatabase | filter:search">
+                    <div layout="row">
+                        <div style="margin-right: 20px;">
+                            <img style="width: 180px;" ng-src="http://tapchinhabep.vn/images/pho-tai-milan1.jpg">
+                        </div>
+                        <div class="md-tile-content">
+                            <h3>{{category.name}}</h3>
+                            <h4>ngon</h4>
+                        </div>
+                        <span flex></span>
+                        <md-checkbox ng-model="category.selected"></md-checkbox>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-item>
+            </md-list>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="saveNewExistedMenuCategory()">
+            Save existed menu category
+        </md-button>
+        <md-button ng-click="cancel()">
+            Cancel
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>

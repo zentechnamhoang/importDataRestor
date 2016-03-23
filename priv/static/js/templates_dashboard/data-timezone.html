@@ -1,0 +1,86 @@
+<md-input-container>
+	<md-select ng-model="timezone" ng-change="changeTime()" style="margin-top: 0px;">
+		<md-option ng-value="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" >(GMT-12:00) International Date Line West</md-option>
+		<md-option ng-value="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" >(GMT-11:00) Midway Island, Samoa</md-option>
+		<md-option ng-value="3" gmtAdjustment="GMT-10:00" useDaylightTime="0" >(GMT-10:00) Hawaii</md-option>
+		<md-option ng-value="4" gmtAdjustment="GMT-09:00" useDaylightTime="1" >(GMT-09:00) Alaska</md-option>
+		<md-option ng-value="5" gmtAdjustment="GMT-08:00" useDaylightTime="1" >(GMT-08:00) Pacific Time (US & Canada)</md-option>
+		<md-option ng-value="6" gmtAdjustment="GMT-08:00" useDaylightTime="1" >(GMT-08:00) Tijuana, Baja California</md-option>
+		<md-option ng-value="7" gmtAdjustment="GMT-07:00" useDaylightTime="0" >(GMT-07:00) Arizona</md-option>
+		<md-option ng-value="8" gmtAdjustment="GMT-07:00" useDaylightTime="1" >(GMT-07:00) Chihuahua, La Paz, Mazatlan</md-option>
+		<md-option ng-value="9" gmtAdjustment="GMT-07:00" useDaylightTime="1" >(GMT-07:00) Mountain Time (US & Canada)</md-option>
+		<md-option ng-value="10" gmtAdjustment="GMT-06:00" useDaylightTime="0" >(GMT-06:00) Central America</md-option>
+		<md-option ng-value="11" gmtAdjustment="GMT-06:00" useDaylightTime="1" >(GMT-06:00) Central Time (US & Canada)</md-option>
+		<md-option ng-value="12" gmtAdjustment="GMT-06:00" useDaylightTime="1" >(GMT-06:00) Guadalajara, Mexico City, Monterrey</md-option>
+		<md-option ng-value="13" gmtAdjustment="GMT-06:00" useDaylightTime="0" >(GMT-06:00) Saskatchewan</md-option>
+		<md-option ng-value="14" gmtAdjustment="GMT-05:00" useDaylightTime="0" >(GMT-05:00) Bogota, Lima, Quito, Rio Branco</md-option>
+		<md-option ng-value="15" gmtAdjustment="GMT-05:00" useDaylightTime="1" >(GMT-05:00) Eastern Time (US & Canada)</md-option>
+		<md-option ng-value="16" gmtAdjustment="GMT-05:00" useDaylightTime="1" >(GMT-05:00) Indiana (East)</md-option>
+		<md-option ng-value="17" gmtAdjustment="GMT-04:00" useDaylightTime="1" >(GMT-04:00) Atlantic Time (Canada)</md-option>
+		<md-option ng-value="18" gmtAdjustment="GMT-04:00" useDaylightTime="0" >(GMT-04:00) Caracas, La Paz</md-option>
+		<md-option ng-value="19" gmtAdjustment="GMT-04:00" useDaylightTime="0" >(GMT-04:00) Manaus</md-option>
+		<md-option ng-value="20" gmtAdjustment="GMT-04:00" useDaylightTime="1" >(GMT-04:00) Santiago</md-option>
+		<md-option ng-value="21" gmtAdjustment="GMT-03:30" useDaylightTime="1" >(GMT-03:30) Newfoundland</md-option>
+		<md-option ng-value="22" gmtAdjustment="GMT-03:00" useDaylightTime="1" >(GMT-03:00) Brasilia</md-option>
+		<md-option ng-value="23" gmtAdjustment="GMT-03:00" useDaylightTime="0" >(GMT-03:00) Buenos Aires, Georgetown</md-option>
+		<md-option ng-value="24" gmtAdjustment="GMT-03:00" useDaylightTime="1" >(GMT-03:00) Greenland</md-option>
+		<md-option ng-value="25" gmtAdjustment="GMT-03:00" useDaylightTime="1" >(GMT-03:00) Montevideo</md-option>
+		<md-option ng-value="26" gmtAdjustment="GMT-02:00" useDaylightTime="1" >(GMT-02:00) Mid-Atlantic</md-option>
+		<md-option ng-value="27" gmtAdjustment="GMT-01:00" useDaylightTime="0" >(GMT-01:00) Cape Verde Is.</md-option>
+		<md-option ng-value="28" gmtAdjustment="GMT-01:00" useDaylightTime="1" >(GMT-01:00) Azores</md-option>
+		<md-option ng-value="29" gmtAdjustment="GMT+00:00" useDaylightTime="0" >(GMT+00:00) Casablanca, Monrovia, Reykjavik</md-option>
+		<md-option ng-value="30" gmtAdjustment="GMT+00:00" useDaylightTime="1" >(GMT+00:00) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</md-option>
+		<md-option ng-value="31" gmtAdjustment="GMT+01:00" useDaylightTime="1" >(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</md-option>
+		<md-option ng-value="32" gmtAdjustment="GMT+01:00" useDaylightTime="1" >(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</md-option>
+		<md-option ng-value="33" gmtAdjustment="GMT+01:00" useDaylightTime="1" >(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</md-option>
+		<md-option ng-value="34" gmtAdjustment="GMT+01:00" useDaylightTime="1" >(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</md-option>
+		<md-option ng-value="35" gmtAdjustment="GMT+01:00" useDaylightTime="1" >(GMT+01:00) West Central Africa</md-option>
+		<md-option ng-value="36" gmtAdjustment="GMT+02:00" useDaylightTime="1" >(GMT+02:00) Amman</md-option>
+		<md-option ng-value="37" gmtAdjustment="GMT+02:00" useDaylightTime="1" >(GMT+02:00) Athens, Bucharest, Istanbul</md-option>
+		<md-option ng-value="38" gmtAdjustment="GMT+02:00" useDaylightTime="1" >(GMT+02:00) Beirut</md-option>
+		<md-option ng-value="39" gmtAdjustment="GMT+02:00" useDaylightTime="1" >(GMT+02:00) Cairo</md-option>
+		<md-option ng-value="40" gmtAdjustment="GMT+02:00" useDaylightTime="0" >(GMT+02:00) Harare, Pretoria</md-option>
+		<md-option ng-value="41" gmtAdjustment="GMT+02:00" useDaylightTime="1" >(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</md-option>
+		<md-option ng-value="42" gmtAdjustment="GMT+02:00" useDaylightTime="1" >(GMT+02:00) Jerusalem</md-option>
+		<md-option ng-value="43" gmtAdjustment="GMT+02:00" useDaylightTime="1" >(GMT+02:00) Minsk</md-option>
+		<md-option ng-value="44" gmtAdjustment="GMT+02:00" useDaylightTime="1" >(GMT+02:00) Windhoek</md-option>
+		<md-option ng-value="45" gmtAdjustment="GMT+03:00" useDaylightTime="0" >(GMT+03:00) Kuwait, Riyadh, Baghdad</md-option>
+		<md-option ng-value="46" gmtAdjustment="GMT+03:00" useDaylightTime="1" >(GMT+03:00) Moscow, St. Petersburg, Volgograd</md-option>
+		<md-option ng-value="47" gmtAdjustment="GMT+03:00" useDaylightTime="0" >(GMT+03:00) Nairobi</md-option>
+		<md-option ng-value="48" gmtAdjustment="GMT+03:00" useDaylightTime="0" >(GMT+03:00) Tbilisi</md-option>
+		<md-option ng-value="49" gmtAdjustment="GMT+03:30" useDaylightTime="1" >(GMT+03:30) Tehran</md-option>
+		<md-option ng-value="50" gmtAdjustment="GMT+04:00" useDaylightTime="0" >(GMT+04:00) Abu Dhabi, Muscat</md-option>
+		<md-option ng-value="51" gmtAdjustment="GMT+04:00" useDaylightTime="1" >(GMT+04:00) Baku</md-option>
+		<md-option ng-value="52" gmtAdjustment="GMT+04:00" useDaylightTime="1" >(GMT+04:00) Yerevan</md-option>
+		<md-option ng-value="53" gmtAdjustment="GMT+04:30" useDaylightTime="0" >(GMT+04:30) Kabul</md-option>
+		<md-option ng-value="54" gmtAdjustment="GMT+05:00" useDaylightTime="1">(GMT+05:00) Yekaterinburg</md-option>
+		<md-option ng-value="55" gmtAdjustment="GMT+05:00" useDaylightTime="0">(GMT+05:00) Islamabad, Karachi, Tashkent</md-option>
+		<md-option ng-value="56" gmtAdjustment="GMT+05:30" useDaylightTime="0" >(GMT+05:30) Sri Jayawardenapura</md-option>
+		<md-option ng-value="57" gmtAdjustment="GMT+05:30" useDaylightTime="0" >(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</md-option>
+		<md-option ng-value="58" gmtAdjustment="GMT+05:45" useDaylightTime="0" >(GMT+05:45) Kathmandu</md-option>
+		<md-option ng-value="59" gmtAdjustment="GMT+06:00" useDaylightTime="1" >(GMT+06:00) Almaty, Novosibirsk</md-option>
+		<md-option ng-value="60" gmtAdjustment="GMT+06:00" useDaylightTime="0" >(GMT+06:00) Astana, Dhaka</md-option>
+		<md-option ng-value="61" gmtAdjustment="GMT+06:30" useDaylightTime="0" >(GMT+06:30) Yangon (Rangoon)</md-option>
+		<md-option ng-value="62" gmtAdjustment="GMT+07:00" useDaylightTime="0" >(GMT+07:00) Bangkok, Hanoi, Jakarta</md-option>
+		<md-option ng-value="63" gmtAdjustment="GMT+07:00" useDaylightTime="1" >(GMT+07:00) Krasnoyarsk</md-option>
+		<md-option ng-value="64" gmtAdjustment="GMT+08:00" useDaylightTime="0" >(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</md-option>
+		<md-option ng-value="65" gmtAdjustment="GMT+08:00" useDaylightTime="0" >(GMT+08:00) Kuala Lumpur, Singapore</md-option>
+		<md-option ng-value="66" gmtAdjustment="GMT+08:00" useDaylightTime="0" >(GMT+08:00) Irkutsk, Ulaan Bataar</md-option>
+		<md-option ng-value="67" gmtAdjustment="GMT+08:00" useDaylightTime="0" >(GMT+08:00) Perth</md-option>
+		<md-option ng-value="68" gmtAdjustment="GMT+08:00" useDaylightTime="0" >(GMT+08:00) Taipei</md-option>
+		<md-option ng-value="69" gmtAdjustment="GMT+09:00" useDaylightTime="0" >(GMT+09:00) Osaka, Sapporo, Tokyo</md-option>
+		<md-option ng-value="70" gmtAdjustment="GMT+09:00" useDaylightTime="0" >(GMT+09:00) Seoul</md-option>
+		<md-option ng-value="71" gmtAdjustment="GMT+09:00" useDaylightTime="1" >(GMT+09:00) Yakutsk</md-option>
+		<md-option ng-value="72" gmtAdjustment="GMT+09:30" useDaylightTime="0" >(GMT+09:30) Adelaide</md-option>
+		<md-option ng-value="73" gmtAdjustment="GMT+09:30" useDaylightTime="0" >(GMT+09:30) Darwin</md-option>
+		<md-option ng-value="74" gmtAdjustment="GMT+10:00" useDaylightTime="0" >(GMT+10:00) Brisbane</md-option>
+		<md-option ng-value="75" gmtAdjustment="GMT+10:00" useDaylightTime="1" >(GMT+10:00) Canberra, Melbourne, Sydney</md-option>
+		<md-option ng-value="76" gmtAdjustment="GMT+10:00" useDaylightTime="1" >(GMT+10:00) Hobart</md-option>
+		<md-option ng-value="77" gmtAdjustment="GMT+10:00" useDaylightTime="0" >(GMT+10:00) Guam, Port Moresby</md-option>
+		<md-option ng-value="78" gmtAdjustment="GMT+10:00" useDaylightTime="1" >(GMT+10:00) Vladivostok</md-option>
+		<md-option ng-value="79" gmtAdjustment="GMT+11:00" useDaylightTime="1" >(GMT+11:00) Magadan, Solomon Is., New Caledonia</md-option>
+		<md-option ng-value="80" gmtAdjustment="GMT+12:00" useDaylightTime="1" >(GMT+12:00) Auckland, Wellington</md-option>
+		<md-option ng-value="81" gmtAdjustment="GMT+12:00" useDaylightTime="0" >(GMT+12:00) Fiji, Kamchatka, Marshall Is.</md-option>
+		<md-option ng-value="82" gmtAdjustment="GMT+13:00" useDaylightTime="0" >(GMT+13:00) Nuku'alofa</md-option>
+	</md-select>
+</md-input-container>
