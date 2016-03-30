@@ -10,7 +10,6 @@ defmodule RestaurantImportInfo.BackendWrapper.Worker do
 	end
     
     # Dashboard
-    account_id, access_token, version, name, status, start_time, end_time, restaurant_id
     def handle_call({:create_menu, account_id, access_token, version, name, status, start_time, end_time, restaurant_id, opts}, _from, state) do
 		response = state.gateway.create_menu(account_id, access_token, version, name, status, start_time, end_time, restaurant_id, [{:config, state.config} | opts])
 		{:reply, response, state}
