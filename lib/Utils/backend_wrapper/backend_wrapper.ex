@@ -1,6 +1,10 @@
 defmodule RestaurantImportInfo.BackendWrapper do
     use Application
     # Dashboard
+    def create_menu(worker, account_id, access_token, version, name, status, start_time, end_time, restaurant_id, opts \\ []) do
+        GenServer.call(worker, {:create_menu, account_id, access_token, version, name, status, start_time, end_time, restaurant_id, opts})
+    end
+    
     def get_all_restaurant(worker, account_id, access_token, opts \\ []) do
         GenServer.call(worker, {:get_all_restaurant, account_id, access_token, opts})
     end
