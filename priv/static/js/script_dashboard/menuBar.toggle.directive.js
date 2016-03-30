@@ -1,14 +1,16 @@
 var myApp = angular.module('common.directives')
 myApp.run(['$templateCache', function ($templateCache) {
       $templateCache.put('partials/menu-toggle.tmpl.html',
-        '<md-button class="md-button-toggle"\n' +
+        '<md-button class="md-button-toggle md-ink-ripple"\n' +
         '  ng-click="toggle()"\n' +
         '  aria-controls="docs-menu-{{section.name | nospace}}"\n' +
-        '  flex layout="row"\n' +
         '  aria-expanded="{{isOpen()}}">\n' +
-        '  <md-icon style="color: sandybrown; font-size:28px; margin-top:-12px;" >{{ section.icon }}</md-icon>\n'+
-        '  <span style="margin-left: 20px; font-size: 18px; color: sandybrown;">{{section.name}}</span>\n' +
-        '  <md-icon aria-hidden="true" style="color: sandybrown; font-size:28px; margin-top:-8px;margin-left: 80px;" class="md-toggle-icon" ng-class="{\'toggled\' : isOpen()}">expand_more</md-icon>\n'+        
+        '  <div flex layout="row">' +
+        '  <md-icon class="format-font-sidenav icon-sidenav">{{ section.icon }}</md-icon>\n'+
+        '  <span class="format-font-sidenav">{{section.name}}</span>\n' +
+        '  <span flex></span>\n' +
+        '  <md-icon aria-hidden="true" class="format-font-sidenav md-toggle-icon" ng-class="{\'toggled\' : isOpen()}">expand_more</md-icon>\n'+        
+        ' </div>' +
         '</md-button>\n' +
         '<ul ng-show="isOpen()" id="docs-menu-{{section.name | nospace}}" class="menu-toggle-list">\n' +
         '  <li ng-repeat="page in section.pages">\n' +

@@ -133,22 +133,13 @@ md-sidenav {
 
 .side-menu .menu-toggle-list a.md-button {
   display: block;
-  padding: 0 16px 0 32px;
+  padding-left: 30px;
   text-transform: none;
   text-rendering: optimizeLegibility;
   font-weight: 200;
   border-radius: 0;
-  font-size: 14px;
-  padding-left: 85px;
+  font-size: 17px;
 }
-
-.side-menu .menu-toggle-list .md-button {
-  display: block;
-  padding: 0 16px 0 32px;
-  text-transform: none;
-}
-
-
 
 .md-button-toggle{
   text-transform: none;
@@ -161,11 +152,9 @@ md-sidenav {
   -webkit-transform: rotateZ(180deg);
 }
 
-.side-menu .md-button-toggle .md-toggle-icon {
+.side-menu .md-button-toggle .md-toggle-icon{
   background-size: 100% auto;
   display: inline-block;
-  margin: auto 0 auto auto;
-  color: #a3aab4;
   transition: transform .3s ease-in-out;
   -webkit-transition: -webkit-transform .3s ease-in-out;
 }
@@ -175,18 +164,20 @@ md-sidenav {
 }
 
 .side-menu .md-button {
-  color: #a3aab4;
-  cursor: pointer;
-  font-weight: 400;
-  line-height: 40px;
-  margin: 0;
-  max-height: 40px;
-  overflow: hidden;
-  padding: 0px 16px 0 50px ;
-  text-align: left;
-  text-decoration: none;
-  white-space: normal;
-  width: 100%;
+    border-radius: 0;
+    color: #a3aab4;
+    cursor: pointer;
+    display: block;
+    align-items: inherit;
+    line-height: 40px;
+    margin: 0;
+    max-height: 40px;
+    overflow: hidden;
+    padding: 0px 16px;
+    text-align: left;
+    text-decoration: none;
+    white-space: normal;
+    width: 100%;
 }
 
 .menu-toggle-list {
@@ -201,11 +192,14 @@ md-sidenav {
   transition-property: max-height;
 }
 
-
-.side-menu menu-toggle span{
-  padding-top: 12px;
-  padding-bottom: 12px;
+.icon-sidenav {
+    padding-right: 10px;
 }
+
+.format-font-sidenav {
+    color: sandybrown;
+}
+
 .div-header-dashboard {
     margin-bottom: 5px; 
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.45);

@@ -8,21 +8,6 @@ myApp.factory('menu', ['$location', function ($location) {
         icon: 'home'
     }];
     
-    sections.push({
-        name: 'TP HCM',
-        type: 'toggle',
-        icon: 'home',
-        pages: [{
-            name: 'Pho 24 chi nhanh 1',
-            state: 'menu.restaurant.restaurant1',
-            type: 'link'
-        },{
-            name: 'Pho 24 chi nhanh 2',
-            state: 'menu.restaurant.restaurant1',
-            type: 'link'
-        }]
-    });
-    
     var self;
     return self = {
         sections: sections,

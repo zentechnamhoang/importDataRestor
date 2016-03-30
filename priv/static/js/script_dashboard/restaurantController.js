@@ -1,5 +1,5 @@
 var myApp = angular.module('restaurant.controller');
- myApp.controller('restaurantController', ['$scope', '$rootScope', '$mdDialog', '$mdMedia', 'dialog', 'utilFunction', 'productService', function ($scope, $rootScope, $mdDialog, $mdMedia, dialog, utilFunction, productService) {
+ myApp.controller('restaurantController', ['$scope', '$rootScope', '$mdDialog', '$stateParams', '$mdMedia', 'dialog', 'utilFunction', 'productService', function ($scope, $rootScope, $mdDialog, $stateParams, $mdMedia, dialog, utilFunction, productService) {     
      // config tree view
      $scope.remove = function (scope) {
         scope.remove();
@@ -201,7 +201,6 @@ var myApp = angular.module('restaurant.controller');
         'currencyUnit': 'USD'
     }]
     
-    $scope.longLat = utilFunction.getLongLatFromAddress("273 Điện Biên Phủ", "phường 7", "quận 3", "thành phố Hồ Chí Minh", "Việt Nam")
     
  }]);
  

@@ -11,7 +11,7 @@ function DialogController($scope, $mdDialog, $log, $rootScope, uploadFile, utilF
         promise.then(
             function (data) {
                 if (data.data.result) {
-                    $rootScope.uploadedImages.push(data.data.data);
+                    $rootScope.$broadcast(productService.getProducts(), data.data.data)
                     $mdDialog.cancel();
                 }
                 else {
@@ -340,18 +340,19 @@ function DialogController($scope, $mdDialog, $log, $rootScope, uploadFile, utilF
     , {type: "Theme restaurant", select: false}, {type: "Thermopolium", select: false}, {type: "Tower restaurant", select: false}, {type: "Trattoria", select: false}, {type: "Truck stop", select: false}, {type: "Underground restaurant", select: false}, {type: "Volxkuche", select: false}]
     
     $scope.saveTypeOfRestaurant = function () {
-        $rootScope.listTypesOfRes = []
+        var listTypesOfRes = []
         for (i = 0; i < $scope.listTypesOfRestaurant.length; i++) {
             if ($scope.listTypesOfRestaurant[i].select) {
-                $rootScope.listTypesOfRes.push($scope.listTypesOfRestaurant[i])
+                listTypesOfRes.push($scope.listTypesOfRestaurant[i].type)
             }
+            $rootScope.$broadcast("typesOfRestaurant", listTypesOfRes)
         }
         $mdDialog.cancel();
     }
     
     // Google map 
     
-    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 12, control: {}};
+    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 14, control: {}};
     
     $scope.options = {scrollwheel: true};
     $scope.coordsUpdates = 0;
@@ -385,7 +386,7 @@ function DialogController($scope, $mdDialog, $log, $rootScope, uploadFile, utilF
         return;
       $scope.coordsUpdates++;
     });
-    $scope.confirmAddress = function () {
+    $scope.findAddress = function () {
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode( { 'address': $scope.address}, function(results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -394,6 +395,10 @@ function DialogController($scope, $mdDialog, $log, $rootScope, uploadFile, utilF
                 $scope.map.control.refresh($scope.map.center);
             }
         });
+    }
+    $scope.confirmAddress = function () {
+        $rootScope.$broadcast("lonLatAddress", {lat: $scope.marker.coords.latitude, lon: $scope.marker.coords.longitude})
+        $mdDialog.cancel();
     }
     
 }

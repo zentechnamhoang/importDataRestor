@@ -19,6 +19,7 @@ defmodule RestaurantImportInfo.Router do
 
     get "/", AuthenticationController, :index
     get "/dashboard", DashboardController, :index
+    get "/confirm/:account_id/:confirm_code", AuthenticationController, :confirm_account
   end
 
   # Other scopes may use custom stacks.
@@ -29,9 +30,14 @@ defmodule RestaurantImportInfo.Router do
         post "/uploadfile", UploadController, :upload_file
     end
     
+    scope "/authen" do
+        post "/signup", AuthenticationController, :sign_up
+        post "/login", AuthenticationController, :log_in
+    end
+    
     scope "/dashboard" do
-        
-        post "/login", DashboardController, :login
+        get "getallrestaurant", DashboardController, :get_all_restaurant
+        post "createrestaurant", DashboardController, :create_restaurant
     end
   end
 end

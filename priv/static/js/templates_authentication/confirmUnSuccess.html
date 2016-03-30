@@ -1,0 +1,33 @@
+<div class="div-authentication-container reset-password">
+    <div class="div-authentication-header login">
+        <img class="imageLogo" src="/images/logo.png">
+        <h1>Your verification link is expired.</h1>
+        <a href="" class="footer-container-link" ng-click="showReSend = !showReSend" >Click here</a> <span>to re-send verification email</span>
+    </div>
+    
+    <div class="div-authentication-content" ng-show="showReSend">
+        <form name="formAuthenticationResetPassword" class="form-reset-password-content">
+            <div class="div-reset-password-container-content">
+                <md-input-container class="md-input-container-authentication">
+                    <label>Email</label>
+                    <input ng-model="email" type="email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" name="email" required="" ng-change="change()">
+                    <div ng-messages="formAuthenticationResetPassword.email.$error">
+                        <div ng-message="required">You can not leave this empty.</div>
+                        <div ng-message="email">Invalid email.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            
+            <div class="div-reset-password-container-button">
+                <md-button class="button-authentication md-raised md-primary" ng-click="clickedSendButtonLogin()" ng-disabled="formAuthenticationResetPassword.$invalid">
+                    <span ng-hide="loading">Re-send</span>
+                    <md-progress-circular md-mode="indeterminate" md-diameter="30" ng-show="loading"></md-progress-circular>
+                </md-button>
+            </div>
+        </form>
+    </div>
+    <div class="div-authentication-footer" layout="row">
+        <div class="footer-container-link left"></div>
+        <a href="#/Login" class="footer-container-link right" >Go back to Login</a>
+    </div>
+</div>

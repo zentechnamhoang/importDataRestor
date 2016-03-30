@@ -6,15 +6,20 @@
             <div>
                 <md-input-container>
                     <label>Name</label>
-                    <input ng-model="restaurant.name">
+                    <input ng-model="name">
                 </md-input-container>
+            </div>
+            <div>
+                <md-checkbox ng-model="status" ng-true-value="'active'" ng-false-value="'inactive'" aria-label="Status" ng-init="status='active'">
+                    Status is {{status}}
+                </md-checkbox>
             </div>
             <md-button class="md-primary md-raised" ng-click="showDialogUploadImage($event)">Upload images</md-button>
             
             <div class="div-thumbsshell" layout="row">
                 <div class="div-thumbswrapper">
                     <ul class="ul-list-image" id="listImage" layout="row">
-                        <li ng-repeat="image in uploadedImages" style="width: 99.969px">
+                        <li ng-repeat="image in images" style="width: 99.969px">
                             <div style="width: 99.969px">
                                 <img ng-mouseenter="showIt()" ng-mouseleave="hideIt()" class="img-dashboard-upload" ng-src="{{image}}"/>
                                 <md-button ng-mouseenter="showIt()" ng-mouseleave="hideIt()" ng-show="showButton" ng-click="deleteImage(image)" class="md-button-show-hiden-mouse-enter-leave md-fab md-mini md-warn">
@@ -25,12 +30,34 @@
                     </ul>
                 </div>
             </div>
+            
+            <div layout="row" layout-margin>
+                <md-input-container>
+                    <label>Open time</label>
+                    <md-select ng-model="openTime">
+                        <md-option ng-repeat="opentime in time" value="{{opentime}}">
+                            {{opentime}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                
+                <md-input-container>
+                    <label>Close time</label>
+                    <md-select ng-model="closeTime">
+                        <md-option ng-repeat="closetime in time" value="{{closetime}}">
+                            {{closetime}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <span flex></span>
+            </div>
+            
             <div>
                 <label>Address of restaurant</label>
                 <div>
                     <md-input-container>
                         <label>Address</label>
-                        <input ng-model="restaurant.address">
+                        <input ng-model="address">
                     </md-input-container>
                 </div>
                 <div layout="row" layout-margin>
@@ -39,7 +66,25 @@
                     <div>
                         <md-input-container>
                             <label>City</label>
-                            <input ng-model="restaurant.city">
+                            <input ng-model="city">
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label>Zip code</label>
+                            <input ng-model="zipCode">
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label>District</label>
+                            <input ng-model="district">
+                        </md-input-container>
+                    </div>
+                    <div>
+                        <md-input-container>
+                            <label>Ward</label>
+                            <input ng-model="ward">
                         </md-input-container>
                     </div>
                 </div>
@@ -53,12 +98,9 @@
                 </md-button>
                 <md-list>
                 <md-item ng-repeat="type in listTypesOfRes">
-                    <div layout="row">
-                        <div class="md-tile-content">
-                            <span>{{type.type}}</span>
-                        </div>
+                    <div class="md-tile-content">
+                        <span>{{type.type}}</span>
                     </div>
-                    <md-divider ng-if="!$last"></md-divider>
                 </md-item>
             </md-list>
             </div>
@@ -107,7 +149,7 @@
             <div>
                 <md-input-container>
                     <label>Tax</label>
-                    <input ng-model="restaurant.tax">
+                    <input ng-model="tax">
                 </md-input-container>
             </div>
             <div layout="row">
@@ -115,13 +157,13 @@
                     Tips
                 </div>
                 <div>
-                    <md-checkbox ng-model="isTipOne" aria-label="Checkbox 1">
+                    <md-checkbox ng-model="isTipOne" aria-label="Tip 1">
                         10%
                     </md-checkbox>
-                    <md-checkbox ng-model="isTipTwo" aria-label="Checkbox 1">
+                    <md-checkbox ng-model="isTipTwo" aria-label="Tip 2">
                         15%
                     </md-checkbox>
-                    <md-checkbox ng-model="isTipThree" aria-label="Checkbox 1">
+                    <md-checkbox ng-model="isTipThree" aria-label="Tip 3">
                         20%
                     </md-checkbox>
                 </div>
@@ -204,9 +246,16 @@
                         
                     </div>
                     
+                    <div>
+                        <md-input-container>
+                            <label>Franchise ID</label>
+                            <input ng-model="franchiseId">
+                        </md-input-container>
+                    </div>
+                    
                 </div>
             </div>
-            <md-button class="md-primary md-raised">
+            <md-button class="md-primary md-raised" ng-click="createNewRestaurant()">
                 Save
             </md-button>
         </md-content>

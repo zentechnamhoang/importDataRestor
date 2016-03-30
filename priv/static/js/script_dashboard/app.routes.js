@@ -1,5 +1,6 @@
 var myApp = angular.module('ZentechRestor', ['menuBar.controller']);
 myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
+   
    $stateProvider
         .state('menu',{
             url: '/',
@@ -21,19 +22,30 @@ myApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $
         })
         .state('menu.restaurant', {
             url: 'restaurant',
-            abtract: true
-        })
-        .state('menu.restaurant.restaurant1',{
-            url: '/restaurant1',
-            views: {
-                'content@menu': {
-                    templateUrl: '/js/templates_dashboard/restaurant_view.html',
-                    controller: "restaurantController"
-                }
-            }
+            abstract: true
         })
     $urlRouterProvider.otherwise("home");
+    $stateProviderRef = $stateProvider;
 }]);
+
+myApp.run(['$q', '$rootScope', '$state', function($q, $rootScope, $state){
+    $rootScope.$on('listState', function(ev, params){
+        angular.forEach(params, function (value, key) { 
+            var state = {
+                url: value.url,
+                views: {
+                    'content@menu': {
+                        templateUrl: value.views["content@menu"].templateUrl,
+                        controller: value.views["content@menu"].controller
+                    }
+                }
+            };
+            $stateProviderRef.state(value.name, state);
+        });
+    });
+    
+}]);
+
 //take all whitespace out of string
 myApp.filter('nospace', function () {
       return function (value) {

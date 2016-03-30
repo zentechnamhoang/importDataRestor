@@ -24,13 +24,12 @@
                 </div>
                 <div class="div-login-container-button">
                     <md-button class="button-authentication md-raised md-primary"
-                        ng-click="clickedSendButtonLogin()"
+                        ng-click="logIn()"
                         ng-disabled="formAuthenticationContainerContent.$invalid">
                         <span ng-hide="loading">Login</span>
                         <md-progress-circular md-mode="indeterminate" md-diameter="30" ng-show="loading"></md-progress-circular>
                     </md-button>
                 </div>
-                
             </div>
         </form>
     </div>

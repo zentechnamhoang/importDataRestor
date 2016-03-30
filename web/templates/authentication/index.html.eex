@@ -21,4 +21,7 @@
 <script src="/js/script_authentication/app_routes.js"></script>
 <script src="/js/script_authentication/loginController.js"></script>
 <script src="/js/script_authentication/signupController.js"></script>
+<script src="/js/script_authentication/authen.service.js"></script>
+<script src="/js/script_authentication/authen.directive.js"></script>
+<script src="/js/script_authentication/confirmUnsuccess.js"></script>
 <script src="/js/script_authentication/resetPasswordController.js"></script>
